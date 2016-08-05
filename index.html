@@ -1,0 +1,76 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+	    <title>How to Build and Ship an MVP in 24 Hours</title>
+
+	    <meta name="description" content="How to Build and Ship an MVP in 24 Hours">
+	    <meta name="author" content="Donald Whyte and Mansimran Singh">
+
+	    <meta name="apple-mobile-web-app-capable" content="yes">
+	    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+
+	    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+
+	    <meta property="og:title" content="How to Build and Ship an MVP in 24 Hours" />
+	    <meta property="og:description" content="Talk on how to build and ship an MVP in 24 hours, complete with code examples" />
+	    <meta property="og:url" content="http://donaldwhyte.github.io/how-to-build-and-ship-an-mvp-in-24-hours" />
+	    <meta property="og:image" content="http://donaldwhyte.github.io/how-to-build-and-ship-an-mvp-in-24-hours/images/og_image.png" /> <!-- TODO: make og_image.png -->
+
+		<link rel="stylesheet" href="css/reveal.css">
+		<link rel="stylesheet" href="css/theme/night.css">
+		<link rel="stylesheet" href="css/custom.css">
+
+		<!-- Theme used for syntax highlighting of code -->
+		<link rel="stylesheet" href="lib/css/zenburn.css">
+
+		<!-- Printing and PDF exports -->
+		<script>
+			var link = document.createElement( 'link' );
+			link.rel = 'stylesheet';
+			link.type = 'text/css';
+			link.href = window.location.search.match( /print-pdf/gi ) ? 'css/print/pdf.css' : 'css/print/paper.css';
+			document.getElementsByTagName( 'head' )[0].appendChild( link );
+		</script>
+	</head>
+	<body>
+		<div class="reveal">
+			<div class="slides">
+          <section>
+            <h2>How to Build and Ship an MVP</h2>
+            <h3>(in 24 hours)</h3>
+
+            <p>
+                <a href="http://twitter.com/donald_whyte">Donald Whyte</a>
+                / <a href="http://mansimransingh.com/">Mansimran Singh</a>
+            </p>
+
+            <div id="company-notice">
+              <img src="images/startupbus.svg" alt="StartupBus" />
+              <img src="images/general_assembly.svg" alt="General Assembly" />
+            </div>
+          </section>
+			</div>
+		</div>
+
+		<script src="lib/js/head.min.js"></script>
+		<script src="js/reveal.js"></script>
+
+		<script>
+			// More info https://github.com/hakimel/reveal.js#configuration
+			Reveal.initialize({
+				history: true,
+
+				// More info https://github.com/hakimel/reveal.js#dependencies
+				dependencies: [
+					{ src: 'plugin/markdown/marked.js' },
+					{ src: 'plugin/markdown/markdown.js' },
+					{ src: 'plugin/notes/notes.js', async: true },
+					{ src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } }
+				]
+			});
+		</script>
+	</body>
+</html>
