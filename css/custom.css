@@ -1,4 +1,29 @@
 .reveal section img {
     border: 0px;
     box-shadow: none;
+    background: none;
+}
+
+#company-notice {
+    margin-top: 64px;
+    float: right;
+}
+
+#company-notice p {
+    font-size: 24px;
+    margin: 0px;
+    text-align: center;
+}
+
+#company-notice img {
+    margin: 12px;
+}
+
+/* Image Sizes */
+img[alt="StartupBus"] {
+    width: 180px;
+}
+
+img[alt="General Assembly"] {
+    width: 115px;
 }
