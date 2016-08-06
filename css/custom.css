@@ -4,8 +4,12 @@
     background: none;
 }
 
+#presentation-title {
+    margin-top: 128px;
+}
+
 #company-notice {
-    margin-top: 64px;
+    margin-top: 32px;
     float: right;
 }
 
@@ -26,4 +30,8 @@ img[alt="StartupBus"] {
 
 img[alt="General Assembly"] {
     width: 115px;
+}
+
+img[alt="Programmable Web"] {
+    width: 600px;
 }
