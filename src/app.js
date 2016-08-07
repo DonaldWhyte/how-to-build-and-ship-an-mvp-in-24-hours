@@ -196,8 +196,8 @@ app.get('/auth/trello/callback', passport.authorize('trello', { failureRedirect:
   res.redirect('/account');
 });
 
-app.get('/project', projectController.getProjects);
-app.post('/project', projectController.addProject);
+app.get('/projects', projectController.getProjects);
+app.post('/projects', projectController.addProject);
 
 /**
  * OAuth authorization routes. (API examples)

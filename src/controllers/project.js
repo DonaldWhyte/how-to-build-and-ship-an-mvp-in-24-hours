@@ -19,13 +19,18 @@ exports.getProjects = (req, res, next) => {
 };
 
 exports.addProject = (req, res, next) => {
+  // must be logged in
+  if (!req.user) {
+    return res.redirect('/');
+  }
+  
   req.assert('name', 'Project name cannot be blank').notEmpty();
 
   const errors = req.validationErrors();
 
   if (errors){
     req.flash('errors', errors);
-    return res.redirect('/project');
+    return res.redirect('/projects');
   }
 
   const project = new Project({name: req.body.name, user: req.user});
@@ -34,7 +39,7 @@ exports.addProject = (req, res, next) => {
     if (err){
       req.flash('errors', err);
     } else {
-      return res.redirect('/project');
+      return res.redirect('/projects');
     }
   });
 };
