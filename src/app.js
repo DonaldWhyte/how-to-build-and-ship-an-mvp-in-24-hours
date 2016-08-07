@@ -32,6 +32,7 @@ const userController = require('./controllers/user');
 const apiController = require('./controllers/api');
 const contactController = require('./controllers/contact');
 const trelloController = require('./controllers/api/trello');
+const projectController = require('./controllers/project');
 
 /**
  * API keys and Passport configuration.
@@ -195,6 +196,8 @@ app.get('/auth/trello/callback', passport.authorize('trello', { failureRedirect:
   res.redirect('/account');
 });
 
+app.get('/project', projectController.getProjects);
+app.post('/project', projectController.addProject);
 
 /**
  * OAuth authorization routes. (API examples)
