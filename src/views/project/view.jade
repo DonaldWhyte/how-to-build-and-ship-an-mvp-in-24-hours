@@ -1,0 +1,18 @@
+extends ../layout
+
+block content
+  .page-header
+    h3 Project: #{project.name}
+  
+  if project.channels.length
+    ul
+    each channel in project.channels
+      li.channel
+        span Some channel name - with completion
+    
+    hr
+    div 
+      h5.text-center.text-danger #[a(href='/projects/#{project.id}') Add another channel?]
+  else
+    div 
+      h5.text-center.text-danger No added channels. #[a(href='/projects/#{project.id}/add-channel') Add a channel?]

@@ -23,7 +23,7 @@ block content
     ul
     each project in projects
       li.project
-        div #{project.name}
+        a(href='/projects/#{project.id}') #{project.name}
   else
     div 
       h5.text-center.text-danger No projects found

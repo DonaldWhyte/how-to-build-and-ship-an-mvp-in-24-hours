@@ -23,7 +23,7 @@ exports.addProject = (req, res, next) => {
   if (!req.user) {
     return res.redirect('/');
   }
-  
+
   req.assert('name', 'Project name cannot be blank').notEmpty();
 
   const errors = req.validationErrors();
@@ -43,3 +43,24 @@ exports.addProject = (req, res, next) => {
     }
   });
 };
+
+exports.getProject = (req, res, next) => {
+  if(!req.user){
+    return res.redirect('/');
+  }
+
+  Project.findOne({ user: req.user.id, _id: req.params.id }, function(err, doc){
+    if (err){
+      req.flash('errors', err);
+    } else {
+      res.render('project/view', {
+        title: doc.name + ' | Project',
+        project: doc,
+        errors: err
+      });
+    }
+  });
+};
+
+
+
