@@ -22,7 +22,7 @@ const upload = multer({ dest: path.join(__dirname, 'uploads') });
 /**
  * Load environment variables from .env file, where API keys and passwords are configured.
  */
-dotenv.load({ path: '.env.example' });
+dotenv.load({ path: '.env' });
 
 /**
  * Controllers (route handlers).
@@ -189,6 +189,12 @@ app.get('/account/unlink/:provider', passportConfig.isAuthenticated, userControl
 // app.get('/auth/linkedin/callback', passport.authenticate('linkedin', { failureRedirect: '/login' }), (req, res) => {
 //   res.redirect(req.session.returnTo || '/');
 // });
+
+app.get('/auth/trello', passport.authorize('trello'))
+app.get('/auth/trello/callback', passport.authorize('trello', { failureRedirect: '/account' }), (req, res) => {
+  res.redirect('/account');
+});
+
 
 /**
  * OAuth authorization routes. (API examples)

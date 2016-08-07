@@ -80,7 +80,7 @@ block content
   .form-horizontal
     .form-group
       .col-sm-offset-3.col-sm-4
-        if user.trello
+        if user.trello && user.trello.accessToken && user.trello.tokenSecret
           p: a.text-danger(href='/account/unlink/trello') Unlink your Trello account
         else
           p: a(href='/auth/trello') Link your Trello account
