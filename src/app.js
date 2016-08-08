@@ -199,6 +199,7 @@ app.get('/auth/trello/callback', passport.authorize('trello', { failureRedirect:
 app.get('/projects', projectController.getProjects);
 app.post('/projects', projectController.addProject);
 app.get('/projects/:id', projectController.getProject);
+app.get('/projects/:id/add-channel', projectController.addChannel);
 
 /**
  * OAuth authorization routes. (API examples)

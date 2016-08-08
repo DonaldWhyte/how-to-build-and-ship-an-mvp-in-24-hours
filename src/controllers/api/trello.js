@@ -9,3 +9,5 @@ const trello = new _trello(process.env.TRELLO_API_KEY);
 exports.get = (req, res, next) => {
     res.json({welcome:'Hello world new controller!'});
 };
+
+exports.engine = trello;

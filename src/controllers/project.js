@@ -1,4 +1,6 @@
 const Project = require('../models/Project');
+const Trello = require('./api/trello');
+
 /**
  * GET /project
  * Contact form page.
@@ -62,5 +64,11 @@ exports.getProject = (req, res, next) => {
   });
 };
 
+exports.addChannel = (req, res, next) => {
+  if (!req.user) {
+    return res.redirect('/');
+  }
 
+  
+};
 
