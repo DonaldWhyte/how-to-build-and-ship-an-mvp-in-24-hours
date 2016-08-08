@@ -79,7 +79,7 @@ passport.use('trello', new TrelloStrategy({
       user.trello = {};
       user.trello.accessToken = token;
       user.trello.tokenSecret = tokenSecret;
-      user.trello.profile = profile;
+      user.trello.id = profile._json.id;
       user.save((err) => {
         done(err, user);
       });
