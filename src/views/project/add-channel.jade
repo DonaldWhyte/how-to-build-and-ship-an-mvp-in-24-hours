@@ -1,0 +1,18 @@
+extends ../layout
+
+block content
+  .page-header
+    h3 Project: #{project.name}
+  
+  h5 Trello boards
+
+  if boards.length 
+    ul
+    each board in boards
+      li.board-name 
+        a(href='/projects/#{project.id}/add-channel/trello/#{board.id}') #{board.name}
+  else
+    div
+      h5.text-center.text-danger No trello boards found. 
+
+  //- div #{boards}

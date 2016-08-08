@@ -64,11 +64,29 @@ exports.getProject = (req, res, next) => {
   });
 };
 
+// TODO you might want to have types of channel? 
+// but for now we'll stick with this
 exports.addChannel = (req, res, next) => {
   if (!req.user) {
     return res.redirect('/');
   }
 
-  
+  Project.findOne({ user: req.user.id, _id: req.params.id }, function(err, doc){
+    if (err){
+      req.flash('errors', err);
+    } else {
+      Trello.getBoards(req, function(err, boards){
+        if (err){
+          next(err);
+        } else {
+          res.render('project/add-channel', {
+            title: doc.name +' | Project',
+            project: doc,
+            boards: boards
+          });
+        }
+      });
+    }
+  });  
 };
 
