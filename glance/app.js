@@ -5,13 +5,87 @@ var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var dotenv = require('dotenv').config();
-
+var passport = require('passport');
+var TwitterStrategy = require('passport-twitter').Strategy;
+var expressSession = require('express-session');
+var mongoose = require('mongoose');
 var routes = require('./routes/index');
 var users = require('./routes/users');
 var projects = require('./routes/projects');
 var channels = require('./routes/channels');
 
 var app = express();
+
+var User = require('./models/User');
+
+mongoose.connect(process.env.MONGOLAB_URI);
+mongoose.connection.on('error', () => {
+  console.error('MongoDB Connection Error. Please make sure that MongoDB is running.');
+  process.exit(1);
+});
+
+
+/** setup passport twitter auth **/
+
+passport.use(new TwitterStrategy({
+  consumerKey: process.env.TWITTER_CONSUMER_KEY,
+  consumerSecret: process.env.TWITTER_CONSUMER_SECRET,
+  callbackURL: '/login/twitter/callback',
+  passReqToCallback: true
+}, (req, accessToken, tokenSecret, profile, done) => {
+  if (req.user) {
+    User.findOne({ twitterId: profile.id }, (err, existingUser) => {
+      if (existingUser) {
+        req.flash('errors', { msg: 'There is already a Twitter account that belongs to you. Sign in with that account or delete it, then link it with your current account.' });
+        done(err);
+      } else {
+        User.findById(req.user.id, (err, user) => {
+
+          user.twitterId = profile.id;
+          user.twitterSecret = tokenSecret;
+          user.twitterToken = accessToken;
+          user.name = profile.displayName;
+          user.avatar = profile._json.profile_image_url_https;
+
+          user.save((err) => {
+            req.flash('info', { msg: 'Twitter account has been linked.' });
+            done(err, user);
+          });
+        });
+      }
+    });
+  } else {
+    User.findOne({ twitterId: profile.id }, (err, existingUser) => {
+      if (existingUser) {
+        return done(null, existingUser);
+      }
+      var user = new User();
+
+      user.twitterId = profile.id;
+      user.twitterSecret = tokenSecret;
+      user.twitterToken = accessToken;
+      user.name = profile.displayName;
+      user.avatar = profile._json.profile_image_url_https;
+      user.save((err) => {
+        done(err, user);
+      });
+    });
+  }
+}));
+
+
+passport.serializeUser((user, done) => {
+  done(null, user.id);
+});
+
+passport.deserializeUser((id, done) => {
+  User.findById(id, (err, user) => {
+    done(err, user);
+  });
+});
+
+/** end passport twitter auth **/
+
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -23,12 +97,33 @@ app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
+
 app.use(express.static(path.join(__dirname, 'public')));
+
+app.use(cookieParser());
+app.use(bodyParser.urlencoded({ extended: true }));
+app.use(expressSession({ secret: process.env.SESSION_SECRET, resave: true, saveUninitialized: true }));
+
+app.use(passport.initialize());
+app.use(passport.session());
 
 app.use('/', routes);
 app.use('/project', projects);
 app.use('/project/:id', channels);
 app.use('/users', users);
+
+app.get('/login', passport.authenticate('twitter'));
+app.get('/login/twitter/callback', 
+  passport.authenticate('twitter', { failureRedirect: '/login' }),
+  function(req, res) {
+    res.redirect('/project');
+  }
+);
+
+app.get('/logout', function(req, res, next){
+  req.logout();
+  res.redirect('/');
+});
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
