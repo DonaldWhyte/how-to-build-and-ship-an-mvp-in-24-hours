@@ -32,7 +32,7 @@
 
     <div id="wrapper">
         <div class="overlay"></div>
-    
+        {{#unless homepage}}
         <!-- Sidebar -->
         <nav class="navbar navbar-inverse navbar-fixed-top" id="sidebar-wrapper" role="navigation">
             <ul class="nav sidebar-nav">
@@ -46,30 +46,32 @@
                     <a href="#">Mansimran Singh</a>
                 </li>
                 <li>
-                    <a href="#"><i class="fa fa-fw fa-plus"></i> Add a project</a>
+                    <a href="/project/new"><i class="fa fa-fw fa-plus"></i> Add a project</a>
                 </li>
                 <li>
                     <a href="/project"><i class="fa fa-fw fa-file-o"></i> My projects</a>
                 </li>
                 <li>
-                    <a href="#"><i class="fa fa-fw fa-cog"></i> Settings</a>
+                    <a href="/me"><i class="fa fa-fw fa-cog"></i> Settings</a>
                 </li>
                 <li>
-                    <a href="#"><i class="fa fa-fw fa-cog"></i> Logout</a>
+                    <a href="/logout"><i class="fa fa-fw fa-cog"></i> Logout</a>
                 </li>
             </ul>
         </nav>
         <!-- /#sidebar-wrapper -->
         
-
+        {{/unless}}
 
         <!-- Page Content -->
         <div id="page-content-wrapper">
+            {{#unless homepage}}
           <button type="button" class="hamburger is-closed animated fadeInLeft" data-toggle="offcanvas">
             <span class="hamb-top"></span>
             <span class="hamb-middle"></span>
             <span class="hamb-bottom"></span>
           </button>
+            {{/unless}}
             
             {{{body}}} 
         </div>

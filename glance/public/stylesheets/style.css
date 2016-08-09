@@ -317,3 +317,8 @@ body a:hover {
     padding:35px;
 }
 /** end sidebar profile **/
+
+#logo-wrapper {
+  max-width:100%;
+  text-align:center;
+}
