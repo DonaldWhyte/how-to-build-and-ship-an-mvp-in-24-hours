@@ -38,7 +38,13 @@
   <body>
     <div class="reveal">
       <div class="slides">
-        <section>
+        <section data-notes="
+## Who This is For?
+
+* developers
+* designers
+* anyone who wants to prototype
+">
           <div id="presentation-title">
             <h2>How to Build and Ship an MVP</h2>
             <h2>In 24 Hours</h2>
@@ -61,37 +67,301 @@
         </section>
 
         <section>
-          <section data-markdown>
-            TODO: what this talk is
+          <section data-background="images/group_talking.jpg" data-notes="
+You and a bunch of mates having a chat in a coffee shop, having casual
+conversation while sipping on sipping on £3 flat whites. You're discussing your
+daily problems.
+
+* TODO
+* TODO
+* TODO
+
+Suddenly, one of you has an idea. You think you know how to solve your friend's
+problem. That idea turns into an app. You start discussing what features it
+should have, who it's for, you give it a name.
+
+Everyone's excited.
+">
+          </section>
+
+          <section data-backogrund="images/group_start.jpg" data-notes="
+Let's do it.
+">
+          </section>
+
+          <section data-background="images/group_working.jpg" data-notes="
+So then you start discussing...what needs to get done?
+
+You start breaking the problem down, making a list all of the work required.
+">
+          </section>
+
+          <section>
+            <p class="fragment fade-in">Decide all of features</p>
+            <p class="fragment fade-in">Design the app</p>
+            <p class="fragment fade-in">Decide tech/platforms</p>
+            <p class="fragment fade-in">Setup database</p>
+            <p class="fragment fade-in">Write front-end</p>
+            <p class="fragment fade-in">Write back-end</p>
+            <p class="fragment fade-in">Deploy back-end</p>
+            <p class="fragment fade-in">Release to the app store</p>
+          </section>
+
+          <section data-notes="
+Suppose this was a mobile app. Writing the app would involve...
+
+As the idea grows, people start adding more features to the product, increasing
+the time it takes to get it out of the door. This increase in cost does not
+grow linearly either.
+">
+            <h3>Write Front-End and Back-end</h3>
+
+            <div class="spaced-components">
+              <p class="fragment fade-in">Designing the front-end</p>
+              <p class="fragment fade-in">Coding it to match the design</p>
+              <p class="fragment fade-in">User account management</p>
+              <p class="fragment fade-in">Managing user payment info</p>
+              <p class="fragment fade-in">Form validation</p>
+              <p class="fragment fade-in">Store relevant data in DB</p>
+              <p class="fragment fade-in">Write back-end business logic</p>
+              <p class="fragment fade-in">Integrate various APIs</p>
+              <p class="fragment fade-in">Ensure the app looks good on all devices</p>
+              <p class="fragment fade-in">Test combination of features work correctly</p>
+            </div>
+          </section>
+
+          <section data-background="images/group_distraught.jpg" data-notes="
+The list grows so large that the app insurmountable. All you wanted was to build
+an app that TODO. You just want to build something you think is awesome and find
+out if people want it.
+
+You have a job. You have other commitments. And the amount of upfront time
+required to make your idea a reality discourages you.
+
+So you give up.
+">
+          </section>
+
+          <section data-background="images/group_drinking.jpg" data-notes="
+A few months later, after giving up and forgetting about the idea, you'll find
+out someone's actually built the thing and now has a company valued at millions.
+
+And you'll sit there bemoaning the fact you thought of the idea but didn't act
+on it.
+">
           </section>
 
           <section data-markdown>
-            ## Who This is For?
+            ### Why Does this Happen?
 
-            * developers
-            * designers
-            * anyone who wants to prototype
+            * Poor estimation of work
+            * Feature creep
+            * "More is better" fallacy
+            * Fear to ship
           </section>
         </section>
 
         <section>
           <section data-markdown>
-            ## 1. Define Scope
+            ## MVP
+
+            ####  Minimum Viable Product
+          </section>
+
+          <section data-markdown data-notes="
+I'm sure most of you know what an MVP is, but its definition bears repeating.
+">
+            ### A Definition
+
+            > Smallest thing you can build that gets the product out to customers
+          </section>
+
+          <section data-markdown data-notes="
+It's an optimisation problem.
+
+You want to maximise the learning the product gives you, whilst minimising the
+resource costs.
+">
+            ## Goal
+
+            maximise learning about your users/problem domain
+
+            using the least time/effort possible
+          </section>
+
+          <section data-notes="
+Some definitions would consider paper prototypes and mock ups MVPs. After all,
+you can learn about the problem domain and users that way.
+
+In this talk however, we're a little stricter on our definition. We're going to
+be defining an MVP as one the smallest product that can be shipped to users and
+imemdiately provide real value.
+
+Something we can build and ship.
+">
+            <h3>Our Definition</h3>
+
+            <blockquote class="fragment fade-in">
+              Smallest product that can be shipped to users and immediately provide value
+            </blockquote>
+          </section>
+
+          <section data-markdown>
+            Absolute minimum to show your vision
+
+            But enough to ship to users
+
+            Single core feature you want to validate
+
+            Nothing else
           </section>
         </section>
 
         <section>
           <section data-markdown>
-            ## 2. Sketch Mockups
+            ## Let's Build Something!
           </section>
-        </section>
 
-        <section>
+          <section data-background="images/startupbus_working2.jpg" data-notes="
+One problem we often have with StartupBus events in making sure that each team
+are on track, and are prioriting the right tasks.
+
+We have multiple buses, or hackathons, running at the same time.
+
+Each bus has many teams, all of which are multi-disciplinary. There's developers,
+designers and biz dev people.
+
+Making sure each team on every bus is on track is a logistical nightmare.
+
+We don't want to constantly check up on teams and micro-manage them. They've got
+a lot to do and not a lot of time to do.
+
+Our solution?
+">
+          </section>
+
+          <section data-background="images/trello_board.png" data-notes="
+We provide each team with a Trello board.
+
+The board contains high-level tasks, or milestones, the team's should strive to reach.
+
+We've found it to be an effective way of getting a team to prioritise getting an MVP out the door and shipped to customers.
+">
+          </section>
+
           <section data-markdown>
-            ## 3. Define Data Model
+            ### The Problem
+
+            Teams are:
+
+            * distributed across multiple locations
+            * multi-disciplined
+            * managed by different people
+            * busy
+          </section>
+
+          <section data-notes="
+Trello doesn't support aggregated statistics on boards out of the box.
+
+Having one of the directors constantly inspect the Trello boards of 30 or more
+teams is time-consuming and wasteful.
+
+It doesn't really solve the problem.
+
+We need an...
+">
+            <p>We need an effective way to see the progress of the entire competition.</p>
+
+            <h2 class="fragment fade-in">At a glance.</h2>
+          </section>
+
+          <section data-markdown data-notes="
+TODO: Some general market trends that may make this viable.
+">
+            ### One Step Further
+
+            Massive growth in decentralised, distributed teams
+
+            Self-managed teams with shallow hierarchy
+
+            TODO
+          </section>
+
+          <section data-markdown data-notes="
+Features:
+
+1. Integrate many task managements
+2. Generate and share URLs to view aggregated progress
+3. Provide API so aggregated progress data can be used in other apps
+">
+            ## Glance
+
+            Aggregation of progress.
+
+            ![glance_vision](images/glance_vision.svg)
+          </section>
+
+          <section data-notes="
+Follow the rule of one.
+
+We want our MVP to test the assumption that people have a need to view overviews
+of project progress that are not produced by existing tools.
+
+Any features, integrations outside not related to testing that assumption will
+be ignored.
+
+You focus on one pain point for the MVP. You have tunnel vision -- you live and
+breathe that pain point, it's all you think about.
+">
+            <h3>The MVP</h3>
+            <h3>Follow the Rule of One</h3>
+
+            <p class="fragment fade-in"><strong>One</strong> user type</p>
+            <p class="fragment fade-in"><strong>One</strong> use case</p>
+            <p class="fragment fade-in"><strong>One</strong> industry</p>
+            <p class="fragment fade-in"><strong>One</strong> core feature</p>
+            <p class="fragment fade-in"><strong>One</strong> very specific problem</p>
+          </section>
+
+          <section data-notes="
+So what pain point are we going to focus on for this talk?
+
+Our pain point.
+">
+            <p>Distributed team management</p>
+            <p>Short-term projects</p>
+            <p>Who manage their tasks using Trello</p>
+
+            <h3 class="fragment fade-in">StartupBus Team Tracking</h3>
+          </section>
+
+          <section data-markdown>
+            ![glance_for_now](images/glance_for_now.svg)
+          </section>
+
+          <section data-background="images/trello_board.png" data-notes="
+We want to turn dozens of these...
+">
+          </section>
+
+          <section data-background="images/glance_mvp_screenshot.png" data-notes="
+...into this.
+">
+          </section>
+
+          <section data-markdown data-notes="
+Defining a clearly scoped MVP is one thing.
+
+Building it is another.
+
+There's a certain mindset one must adopt to .
+">
+            But how are we going to build this in 24 hours?
           </section>
 
           <section data-background="images/lego_blocks.jpg" data-notes="
+Adopt a lego mindset.
+
 TODO
 ">
           </section>
@@ -101,163 +371,300 @@ TODO
 ">
           </section>
 
-          <section data-background="images/lego_mvp.jpg" data-notes="
-TODO
-">
-          </section>
-
           <section data-background="images/lego_mvp2.jpg" data-notes="
 TODO
 ">
           </section>
-        </section>
 
-        <section>
-          <section data-markdown>
-            ## 4. Parallelise Efforts
+          <section data-background="images/lego_pyramid.jpg" data-notes="
+We can group these blocks into four types.
+
+Front-end -- what the user interacts with
+
+Back-end -- where all the complex business logic lives and data is stored
+
+The back-end supported by pre-existing APIs and deployment platforms.
+
+The goal is to use as many existing blocks for each of these categories as possible.
+">
           </section>
         </section>
 
         <section>
           <section data-markdown>
-            ## 5. Process
+            ## Building Glance
+          </section>
+
+          <section data-markdown>
+            ![glance_architecture](images/glance_architecture.svg)
           </section>
         </section>
 
         <section>
           <section data-markdown>
-            ## 6. Deadline Approaches
-          </section>
-        </section>
-
-        <section>
-          <section data-markdown>
-            ## 7. Time is Up!
-          </section>
-        </section>
-
-        <section>
-          <section data-markdown>
-            # Core Tech
-          </section>
-        </section>
-
-        <section>
-          <section data-markdown>
-            # APIs
+            ## Front End
           </section>
 
           <section data-markdown>
-            ### Communication
-
-            * Twilio
-            * Yo
-            * SendGrid
-            * Moxtra
-            * Mailjet
-            * Cisco Tropo
-          </section>
-
-          <section data-markdown>
-            ### Social
-
-            * TODO
-            * TODO
-            * TODO
-
-            * Facebook
-            * Twitter
-            * Reddit
-            * Instagram
-            * Google+
-          </section>
-
-          <section data-markdown>
-            ### Geospatial
-
-            * TODO
-
-            * Google Maps
-            * Yelp
-            * Google Places
-            * ArcGIS
-            * MapBox
-          </section>
-
-          <section data-markdown>
-            ### Natural Language Processing
+            ### Create Mockups
 
             TODO
-
-            * TODO
           </section>
 
           <section data-markdown>
+            TODO: tools for doing mockups
+
+            TODO: Invision?
+          </section>
+
+          <section data-markdown>
+            ### Pick a Colour Scheme
+
+            TODO
+          </section>
+
+          <section data-markdown>
+            ### Building It
+
+            Web page
+
+            Implemented using vanilla HTML/CSS/JavaScript
+
+            Responsive design for mobile support
+          </section>
+
+          <section data-markdown>
+            ![bootstrap_meme](images/bootstrap_meme.jpg)
+          </section>
+
+          <section data-markdown>
+            ### Don't Use the Default Theme!
+
+            Bootstrap templates:
+
+            * https://startbootstrap.com/
+            * https://wrapbootstrap.com/
+
+            Generate Bootstrap theme using input image:
+
+            * http://www.lavishbootstrap.com/
+          </section>
+
+          <section data-background="images/bootstrap_default.png">
+          </section>
+
+          <section data-background="images/bootstrap_custom.png">
+          </section>
+        </section>
+
+        <section>
+          <section data-markdown>
+            ## Back-End and APIs
+          </section>
+
+          <section data-markdown>
+            Decide what APIs to use
+
+            Keep the back-end we write as small as possible
+
+            Use APIs where you can
+          </section>
+
+          <section data-markdown>
+            TODO: useful frameworks / base repos
+          </section>
+
+          <section data-markdown>
+            TODO
+          </section>
+
+          <section data-markdown>
+            ## APIs
+          </section>
+
+          <section data-markdown>
+            ### What is an API?
+
+            TODO: what is an API
+
+            TODO: why use them?
+          </section>
+
+          <section data-markdown>
+            ## APIs as Idea Generators
+
+            TODO
+          </section>
+
+          <section data-markdown class="api-section">
+            ### Social
+
+            Quick and easy account management
+
+            Get users sharing your app with others
+
+            ![facebook](images/facebook.svg)
+            ![twitter](images/twitter.svg)
+            ![instagram](images/instagram.svg)
+            ![google_plus](images/google_plus.svg)
+            ![reddit](images/reddit.svg)
+          </section>
+
+          <section data-markdown class="api-section">
+            ### Communication
+
+            Communicate with users using existing platforms
+
+            ![twilio](images/twilio.svg)
+            ![twitter](images/twitter.svg)
+            ![slack](images/slack.svg)
+            ![sendgrid](images/sendgrid.svg)
+            ![mailjet](images/mailjet.svg)
+          </section>
+
+          <section data-markdown class="api-section">
+            ### Geospatial
+
+            Useful for travel and augmented reality apps
+
+            ![google_maps](images/google_maps.svg)
+            ![bing_maps](images/bing_maps.png)
+            ![foursquare](images/foursquare.svg)
+            ![yelp](images/yelp.svg)
+            ![arcgis](images/arcgis.svg)
+          </section>
+
+          <section data-markdown class="api-section wide">
+            ### Payments
+
+            Convert users to paying customers easily
+
+            Don't need to be PCI complaint
+
+            ![paypal](images/paypal.svg)
+            ![stripe](images/stripe.svg)
+            ![amazon](images/amazon.svg)
+            ![braintree](images/braintree.svg)
+          </section>
+
+          <section data-markdown class="api-section">
+            ### Natural Language Processing and Bots
+
+            Parse and understand human textual input
+
+            Great for automated bots
+
+            ![aylien](images/aylien.png)
+            ![alchemy](images/alchemy.svg)
+            ![google_cloud_platform](images/google_cloud_platform.svg)
+            ![microsoft](images/microsoft.svg)
+          </section>
+
+          <section data-markdown class="api-section">
             ### Image Recognition
 
             TODO
 
-            * TODO
+            ![clarifai](images/clarifai.png)
+            ![cloudsight](images/cloudsight.svg)
+            ![google_cloud_platform](images/google_cloud_platform.svg)
+            ![microsoft](images/microsoft.svg)
+            ![ibm_watson](images/watson.png)
           </section>
 
           <section data-markdown>
-            ### Payments
-
-            Convert users to paying customers!
-
-            * unlock premium feat§ures
-            * TODO
-
-            * PayPal
-            * Stripe
-            * Amazon
-            * BrainTree
-            * GoCardless
-          </section>
-
-          <section data-markdown data-notes="
-">
             ### Programmable Web
 
             Directory containing over 15,000 APIs
 
             ![Programmable Web](images/programmable_web.png)
           </section>
-        </section>
 
-        <section>
           <section data-markdown>
-            # Platforms
+            ### Hackathon Starter Kit
+
+            [https://github.com/sahat/hackathon-starter](https://github.com/sahat/hackathon-starter)
+
+            ![Hackathon Starter Kit](images/hackathon_starter_kit.png)
+          </section>
+
+          <section data-markdown>
+            **Protip:** Stick to the APIs you know!
           </section>
         </section>
 
         <section>
           <section data-markdown>
-            # Collaboration
+            ## Platforms and Deployment
+
+            ![Ship It](images/ship_it.jpg)
+          </section>
+
+          <section data-markdown>
+            ### Platform as a Service (PaaS)
+
+            TODO: Heroku?
+
+            TODO: Cloud9
+
+            TODO: briefly mention AWS, but why we don't recommend it
+          </section>
+
+          <section>
           </section>
         </section>
 
         <section>
           <section data-markdown>
-            # Health
+            ## Process
+          </section>
+
+          <section data-markdown>
+            ### Work Distribution
+
+            TODO: devs/designers
+
+            TODO: parallel or sequential if one -- use diagram
+          </section>
+
+          <section data-markdown>
+            ### Health
+
+            TODO: have this?
           </section>
         </section>
 
         <section>
           <section data-markdown>
-            # The Pitch
+            ## Takeaways
           </section>
-        </section>
 
-        <section>
           <section data-markdown>
-            # Design Focus
+            TODO
           </section>
-        </section>
 
-        <section>
           <section data-markdown>
-            # Takeaways
+            <h3>Get in Touch</h3>
+
+            <div>
+              <img src="images/donald.jpg" alt="Donald Whyte" class="profile-pic" />
+              <div class="contact-details">
+                <a href="http://twitter.com/donald_whyte">@donald_whyte</a><br />
+                <a href="http://github.com/DonaldWhyte">http://github.com/DonaldWhyte</a>
+              </div>
+            </div>
+          </section>
+
+          <section>
+            <h3>Get in Touch</h3>
+
+            <div>
+              <img src="images/donald.jpg" alt="Donald Whyte" class="profile-pic" />
+              <div class="contact-details">
+                <a href="http://twitter.com/donald_whyte">@donald_whyte</a><br />
+                <a href="http://github.com/DonaldWhyte">http://github.com/DonaldWhyte</a>
+              </div>
+            </div>
           </section>
         </section>
 
