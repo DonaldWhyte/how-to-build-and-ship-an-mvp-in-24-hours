@@ -4,8 +4,12 @@
     background: none;
 }
 
+#presentation-title {
+    margin-top: 128px;
+}
+
 #company-notice {
-    margin-top: 64px;
+    margin-top: 32px;
     float: right;
 }
 
@@ -19,6 +23,10 @@
     margin: 12px;
 }
 
+.spaced-components p {
+    margin: 22px;
+}
+
 /* Image Sizes */
 img[alt="StartupBus"] {
     width: 180px;
@@ -26,4 +34,58 @@ img[alt="StartupBus"] {
 
 img[alt="General Assembly"] {
     width: 115px;
+}
+
+img[alt="Programmable Web"] {
+    width: 600px;
+}
+
+img[alt="Hackathon Starter Kit"] {
+    width: 800px;
+}
+
+img[alt="Ship It"] {
+    width: 400px;
+}
+
+.profile-pic {
+  width: 200px;
+  float: left;
+}
+
+.contact-details a {
+  text-align: left;
+}
+
+.api-section img {
+    width: 100px;
+    padding: 12px;
+}
+
+.api-section.wide img {
+    width: 140px;
+}
+
+img[alt="yelp"] {
+    width: 200px !important;
+}
+
+img[alt="stripe"] {
+    width: 100px !important;
+}
+
+img[alt="braintree"] {
+    width: 180px !important;
+}
+
+img[alt="mailjet"] {
+    width: 200px !important;
+}
+
+img[alt="clarifai"] {
+    width: 120px !important;
+}
+
+img[alt="cloudsight"] {
+    width: 120px !important;
 }
