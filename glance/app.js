@@ -45,7 +45,7 @@ passport.use(new TwitterStrategy({
           user.twitterSecret = tokenSecret;
           user.twitterToken = accessToken;
           user.name = profile.displayName;
-          user.avatar = profile._json.profile_image_url_https;
+          user.avatar = profile._json.profile_image_url.replace('_normal.', '.');;
 
           user.save((err) => {
             req.flash('info', { msg: 'Twitter account has been linked.' });
@@ -65,7 +65,7 @@ passport.use(new TwitterStrategy({
       user.twitterSecret = tokenSecret;
       user.twitterToken = accessToken;
       user.name = profile.displayName;
-      user.avatar = profile._json.profile_image_url_https;
+      user.avatar = profile._json.profile_image_url.replace('_normal.', '.');
       user.save((err) => {
         done(err, user);
       });
