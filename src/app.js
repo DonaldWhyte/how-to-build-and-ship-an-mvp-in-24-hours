@@ -200,6 +200,7 @@ app.get('/projects', projectController.getProjects);
 app.post('/projects', projectController.addProject);
 app.get('/projects/:id', projectController.getProject);
 app.get('/projects/:id/add-channel', projectController.addChannel);
+app.get('/projects/:id/add-channel/trello/:board-id', projectController.addTrelloChannel);
 
 /**
  * OAuth authorization routes. (API examples)

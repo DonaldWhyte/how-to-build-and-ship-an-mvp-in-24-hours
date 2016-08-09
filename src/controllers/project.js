@@ -90,3 +90,11 @@ exports.addChannel = (req, res, next) => {
   });  
 };
 
+exports.addTrelloChannel = (req, res, next) => {
+  if (!req.user){
+    return res.redirect('/');
+  }
+
+  
+};
+
