@@ -89,3 +89,15 @@ img[alt="clarifai"] {
 img[alt="cloudsight"] {
     width: 120px !important;
 }
+
+img[alt="the_cloud"] {
+    width: 300px !important;
+}
+
+img[alt="heroku"] {
+    width: 90px !important;
+}
+
+img[alt="aws"] {
+    width: 200px !important;
+}

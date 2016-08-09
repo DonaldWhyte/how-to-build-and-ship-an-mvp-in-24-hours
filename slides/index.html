@@ -67,7 +67,7 @@
         </section>
 
         <section>
-          <section data-background="images/group_talking.jpg" data-notes="
+          <section data-background="images/story1.jpg" data-notes="
 You and a bunch of mates having a chat in a coffee shop, having casual
 conversation while sipping on sipping on £3 flat whites. You're discussing your
 daily problems.
@@ -84,12 +84,12 @@ Everyone's excited.
 ">
           </section>
 
-          <section data-backogrund="images/group_start.jpg" data-notes="
-Let's do it.
+          <section data-background="images/story2.jpg" data-notes="
+Let's do this.
 ">
           </section>
 
-          <section data-background="images/group_working.jpg" data-notes="
+          <section data-background="images/story3.jpg" data-notes="
 So then you start discussing...what needs to get done?
 
 You start breaking the problem down, making a list all of the work required.
@@ -97,6 +97,8 @@ You start breaking the problem down, making a list all of the work required.
           </section>
 
           <section>
+            <h3>What Needs to Get Done?</h3>
+
             <p class="fragment fade-in">Decide all of features</p>
             <p class="fragment fade-in">Design the app</p>
             <p class="fragment fade-in">Decide tech/platforms</p>
@@ -130,9 +132,9 @@ grow linearly either.
             </div>
           </section>
 
-          <section data-background="images/group_distraught.jpg" data-notes="
+          <section data-background="images/story4.jpg" data-notes="
 The list grows so large that the app insurmountable. All you wanted was to build
-an app that TODO. You just want to build something you think is awesome and find
+an app, right?. You just want to build something you think is awesome and find
 out if people want it.
 
 You have a job. You have other commitments. And the amount of upfront time
@@ -142,7 +144,7 @@ So you give up.
 ">
           </section>
 
-          <section data-background="images/group_drinking.jpg" data-notes="
+          <section data-background="images/story5.jpg" data-notes="
 A few months later, after giving up and forgetting about the idea, you'll find
 out someone's actually built the thing and now has a company valued at millions.
 
@@ -352,11 +354,16 @@ We want to turn dozens of these...
           <section data-markdown data-notes="
 Scopinh the MVP is one thing.
 
-Building it is another.
-
-TODO
+Building it in 24 hours is another.
 ">
             But how are we going to build this in 24 hours?
+          </section>
+
+          <section data-markdown>
+            > I will always choose a lazy person to do a difficult job...
+            because, he will find an easy way to do it.
+
+            _Bill Gates_
           </section>
 
           <section data-background="images/lego_blocks.jpg" data-notes="
@@ -392,11 +399,20 @@ The goal is to use as many existing blocks for each of these categories as possi
 
         <section>
           <section data-markdown>
-            ## Building Glance
+            ## Building Glance 0.1
           </section>
 
-          <section>
-            TODO
+          <section data-markdown data-notes="
+We're in MVP mode at the moment. So we re-use as much as possible.
+
+We need to figure out which blocks to use for the four different categories.
+
+Front-end
+Back-End
+APIs
+Deployment platforms
+">
+            ![glance_in_blocks](images/glance_in_blocks.svg)
           </section>
         </section>
 
@@ -475,11 +491,11 @@ The goal is to use as many existing blocks for each of these categories as possi
           </section>
 
           <section data-markdown>
-            * Node
-            * Rails
-            * Python
+            Anything with lots of libraries and tooling
 
-            Use what you're comfortable with TODO
+            **Examples:** Node, Rails, Python
+
+            Use what you're comfortable with!
           </section>
 
           <section data-markdown>
@@ -608,6 +624,7 @@ The goal is to use as many existing blocks for each of these categories as possi
             **Protip:** Stick to the APIs you know!
           </section>
         </section>
+        <!-- END MANI'S STUFF -->
 
         <section>
           <section data-markdown>
@@ -616,23 +633,56 @@ The goal is to use as many existing blocks for each of these categories as possi
             ![Ship It](images/ship_it.jpg)
           </section>
 
+          <section data-markdown data-notes="
+No one gets their own servers these days.
+">
+            ![the_cloud](images/the_cloud.jpg)
+
+            Deploy our back-end service to cloud instances.
+          </section>
+
           <section data-markdown>
             ### Platform as a Service (PaaS)
 
-            Deploy your back-end to the cloud
+            Don't deploy machines, deploy apps.
 
-            TODO: Heroku?
+            To iterate quickly, deplyoments should be as easy as:
 
-            TODO: Cloud9
-
-            TODO: briefly mention AWS, but why we don't recommend it
+            ```
+            git push production master
+            ```
           </section>
 
-          <section>
-            TODO: run through this
+          <section data-markdown class="api-section">
+            ### Commonly Used Platforms
+
+            ![aws](images/aws.svg)
+            ![heroku](images/heroku.png)
+            ![google_app_engine](images/google_app_engine.png)
+            ![ms_azure](images/ms_azure.svg)
+          </section>
+
+          <section data-markdown>
+            ### Heroku
+
+            1. Install Heroku toolbelt
+              - &nbsp;`brew install heroku`
+            2. Authenticate your Heroku account
+              - `heroku login`
+            2. Create Heroku app
+              - `heroku create &lt;appName&gt;`
+            3. Add app's repo to git
+              - `heroku git:remote -a &lt;appName&gt;`
+            4. Deploy your master repo using
+              - `git push heroku master`
+          </section>
+
+          <section data-markdown>
+            Heroku auto-detects type of service you deploy.
+
+            New service is deployed **immediately**.
           </section>
         </section>
-        <!-- END MANI'S STUFF -->
 
         <section>
           <section data-markdown>
@@ -642,19 +692,23 @@ The goal is to use as many existing blocks for each of these categories as possi
           <section data-markdown>
             ![glance_architecture](images/glance_architecture.svg)
           </section>
-        </section>
 
-        <section>
-          <section data-markdown>
-            ## Process
-          </section>
+          <section data-markdown data-notes="
+If there's only one of you working on the app, then make sure you prioritise
+the front-end.
 
-          <section data-markdown>
-            ### Work Distribution
+That way, if you start running out of time, at least you do have something visual
+to show to your issues.
 
-            TODO: devs/designers
+You might even be able to get away with
+">
+            ### Distributing the Work
 
-            TODO: parallel or sequential if one -- use diagram
+            Parallelise as much as possible.
+
+            Otherwise, prioritise the front-end.
+
+            ![work_distribution](images/work_distribution.png)
           </section>
         </section>
 
@@ -665,18 +719,6 @@ The goal is to use as many existing blocks for each of these categories as possi
 
           <section data-markdown>
             TODO
-          </section>
-
-          <section data-markdown>
-            <h3>Get in Touch</h3>
-
-            <div>
-              <img src="images/donald.jpg" alt="Donald Whyte" class="profile-pic" />
-              <div class="contact-details">
-                <a href="http://twitter.com/donald_whyte">@donald_whyte</a><br />
-                <a href="http://github.com/DonaldWhyte">http://github.com/DonaldWhyte</a>
-              </div>
-            </div>
           </section>
 
           <section data-markdown>
