@@ -84,6 +84,13 @@ passport.deserializeUser((id, done) => {
   });
 });
 
+var isAuthenticated = (req, res, next) => {
+  if (req.isAuthenticated()) {
+    return next();
+  }
+  res.redirect('/');
+};
+
 /** end passport twitter auth **/
 
 
@@ -108,9 +115,6 @@ app.use(passport.initialize());
 app.use(passport.session());
 
 app.use('/', routes);
-app.use('/project', projects);
-app.use('/project/:id', channels);
-app.use('/users', users);
 
 app.get('/login', passport.authenticate('twitter'));
 app.get('/login/twitter/callback', 
@@ -124,6 +128,10 @@ app.get('/logout', function(req, res, next){
   req.logout();
   res.redirect('/');
 });
+
+app.use('/project', isAuthenticated, projects);
+app.use('/project/:id', isAuthenticated, channels);
+// app.use('/users', users);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
