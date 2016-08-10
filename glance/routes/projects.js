@@ -4,7 +4,7 @@ var Project = require('../models/Project');
 var Trello = require('../engines/trello');
 var Channel = require('../models/Channel');
 
-var Hook = require('../models/hook');
+var Hook = require('../models/Hook');
 
 router.get('/', function(req, res, next) {
   // must be logged in
