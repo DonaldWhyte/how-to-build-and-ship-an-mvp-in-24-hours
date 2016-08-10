@@ -67,7 +67,7 @@
         </section>
 
         <section>
-          <section data-background="images/group_talking.jpg" data-notes="
+          <section data-background="images/story1.jpg" data-notes="
 You and a bunch of mates having a chat in a coffee shop, having casual
 conversation while sipping on sipping on £3 flat whites. You're discussing your
 daily problems.
@@ -84,12 +84,12 @@ Everyone's excited.
 ">
           </section>
 
-          <section data-backogrund="images/group_start.jpg" data-notes="
-Let's do it.
+          <section data-background="images/story2.jpg" data-notes="
+Let's do this.
 ">
           </section>
 
-          <section data-background="images/group_working.jpg" data-notes="
+          <section data-background="images/story3.jpg" data-notes="
 So then you start discussing...what needs to get done?
 
 You start breaking the problem down, making a list all of the work required.
@@ -97,6 +97,8 @@ You start breaking the problem down, making a list all of the work required.
           </section>
 
           <section>
+            <h3>What Needs to Get Done?</h3>
+
             <p class="fragment fade-in">Decide all of features</p>
             <p class="fragment fade-in">Design the app</p>
             <p class="fragment fade-in">Decide tech/platforms</p>
@@ -130,9 +132,9 @@ grow linearly either.
             </div>
           </section>
 
-          <section data-background="images/group_distraught.jpg" data-notes="
+          <section data-background="images/story4.jpg" data-notes="
 The list grows so large that the app insurmountable. All you wanted was to build
-an app that TODO. You just want to build something you think is awesome and find
+an app, right?. You just want to build something you think is awesome and find
 out if people want it.
 
 You have a job. You have other commitments. And the amount of upfront time
@@ -142,7 +144,7 @@ So you give up.
 ">
           </section>
 
-          <section data-background="images/group_drinking.jpg" data-notes="
+          <section data-background="images/story5.jpg" data-notes="
 A few months later, after giving up and forgetting about the idea, you'll find
 out someone's actually built the thing and now has a company valued at millions.
 
@@ -184,20 +186,19 @@ resource costs.
 ">
             ## Goal
 
-            maximise learning about your users/problem domain
+            **Maximise** learning about the users and problem domain
 
-            using the least time/effort possible
+            **Minimise** resources spent
           </section>
 
           <section data-notes="
 Some definitions would consider paper prototypes and mock ups MVPs. After all,
 you can learn about the problem domain and users that way.
 
-In this talk however, we're a little stricter on our definition. We're going to
-be defining an MVP as one the smallest product that can be shipped to users and
-imemdiately provide real value.
+In this talk however, we use a stricter definition. We define an MVP as the
+smallest product that can be shipped to users and immediately provide reals value.
 
-Something we can build and ship.
+Something that we build and ship to the intended users.
 ">
             <h3>Our Definition</h3>
 
@@ -344,6 +345,7 @@ We want to turn dozens of these...
 ">
           </section>
 
+          <!-- TODO: fill in screenshot with Mani -->
           <section data-background="images/glance_mvp_screenshot.png" data-notes="
 ...into this.
 ">
@@ -352,11 +354,16 @@ We want to turn dozens of these...
           <section data-markdown data-notes="
 Scopinh the MVP is one thing.
 
-Building it is another.
-
-TODO
+Building it in 24 hours is another.
 ">
             But how are we going to build this in 24 hours?
+          </section>
+
+          <section data-markdown>
+            > I will always choose a lazy person to do a difficult job...
+            because, he will find an easy way to do it.
+
+            _Bill Gates_
           </section>
 
           <section data-background="images/lego_blocks.jpg" data-notes="
@@ -392,72 +399,55 @@ The goal is to use as many existing blocks for each of these categories as possi
 
         <section>
           <section data-markdown>
-            ## Building Glance
+            ## Building Glance 0.1
           </section>
 
-          <section>
-            TODO
+          <section data-markdown data-notes="
+We're in MVP mode at the moment. So we re-use as much as possible.
+
+We need to figure out which blocks to use for the four different categories.
+
+Front-end
+Back-End
+APIs
+Deployment platforms
+">
+            ![glance_in_blocks](images/glance_in_blocks.svg)
+          </section>
+
+          <section data-markdown data-notes="
+If there's only one of you working on the app, then make sure you prioritise
+the front-end.
+
+That way, if you start running out of time, at least you do have something visual
+to show to your issues.
+
+You might even be able to get away with
+">
+            ### Distributing the Work
+
+            Parallelise as much as possible.
+
+            Separate developers on each block type.
+
+            If one developer, prioritise the front-end.
           </section>
         </section>
 
-        <!-- MANI'S STUFF -->
         <section>
           <section data-markdown>
             ## Front End
           </section>
 
           <section data-markdown>
-            ### Define User Journey
-
-            TODO
-          </section>
-
-          <section data-markdown>
-          </section>
-
-          <section data-markdown>
-            TODO: tools for doing mockups
-
-            TODO: Invision?
-          </section>
-
-          <section data-markdown>
-            ### Pick a Colour Scheme
-
-            TODO
-          </section>
-
-          <section data-markdown>
-            ### Building It
-
-            Web page
-
-            Implemented using vanilla HTML/CSS/JavaScript
-
-            Responsive design for mobile support
+            1. Design user journey and draw mock-ups
+            2. Use existing templates when it makes sense
+            3. Generate boilerplate UI code
+            4. Use mock data so you don't have to rely on back-end
           </section>
 
           <section data-markdown>
             ![bootstrap_meme](images/bootstrap_meme.jpg)
-          </section>
-
-          <section data-markdown>
-            ### Don't Use the Default Theme!
-
-            Bootstrap templates:
-
-            * https://startbootstrap.com/
-            * https://wrapbootstrap.com/
-
-            Generate Bootstrap theme using input image:
-
-            * http://www.lavishbootstrap.com/
-          </section>
-
-          <section data-background="images/bootstrap_default.png">
-          </section>
-
-          <section data-background="images/bootstrap_custom.png">
           </section>
         </section>
 
@@ -466,134 +456,21 @@ The goal is to use as many existing blocks for each of these categories as possi
             ## Back-End and APIs
           </section>
 
-          <section data-markdown>
-            Decide what APIs to use
-
-            Keep the back-end we write as small as possible
-
-            Use APIs where you can
+          <section data-markdown data-notes="
+Keep the back-end as small as possible by off-loading all the hard work to
+existing APIs.
+">
+            1. Use existing APIs where possible
+            2. Use boilerplate generators or existing projects as a base
+            3. TODO
           </section>
 
           <section data-markdown>
-            * Node
-            * Rails
-            * Python
+            ### API Repository &mdash; Programmable Web
 
-            Use what you're comfortable with TODO
-          </section>
-
-          <section data-markdown>
-            TODO: useful frameworks / base repos
-          </section>
-
-          <section data-markdown>
-            TODO
-          </section>
-
-          <section data-markdown>
-            ## APIs
-          </section>
-
-          <section data-markdown>
-            ### What is an API?
-
-            TODO: what is an API
-
-            TODO: why use them?
-          </section>
-
-          <section data-markdown>
-            ## APIs as Idea Generators
-
-            TODO
-          </section>
-
-          <section data-markdown class="api-section">
-            ### Social
-
-            Quick and easy account management
-
-            Get users sharing your app with others
-
-            ![facebook](images/facebook.svg)
-            ![twitter](images/twitter.svg)
-            ![instagram](images/instagram.svg)
-            ![google_plus](images/google_plus.svg)
-            ![reddit](images/reddit.svg)
-          </section>
-
-          <section data-markdown class="api-section">
-            ### Communication
-
-            Communicate with users using existing platforms
-
-            ![twilio](images/twilio.svg)
-            ![twitter](images/twitter.svg)
-            ![slack](images/slack.svg)
-            ![sendgrid](images/sendgrid.svg)
-            ![mailjet](images/mailjet.svg)
-          </section>
-
-          <section data-markdown class="api-section">
-            ### Geospatial
-
-            Useful for travel and augmented reality apps
-
-            ![google_maps](images/google_maps.svg)
-            ![bing_maps](images/bing_maps.png)
-            ![foursquare](images/foursquare.svg)
-            ![yelp](images/yelp.svg)
-            ![arcgis](images/arcgis.svg)
-          </section>
-
-          <section data-markdown class="api-section wide">
-            ### Payments
-
-            Convert users to paying customers easily
-
-            Don't need to be PCI complaint
-
-            ![paypal](images/paypal.svg)
-            ![stripe](images/stripe.svg)
-            ![amazon](images/amazon.svg)
-            ![braintree](images/braintree.svg)
-          </section>
-
-          <section data-markdown class="api-section">
-            ### Natural Language Processing and Bots
-
-            Parse and understand human textual input
-
-            Great for automated bots
-
-            ![aylien](images/aylien.png)
-            ![alchemy](images/alchemy.svg)
-            ![google_cloud_platform](images/google_cloud_platform.svg)
-            ![microsoft](images/microsoft.svg)
-          </section>
-
-          <section data-markdown class="api-section">
-            ### Image Recognition
-
-            TODO
-
-            ![clarifai](images/clarifai.png)
-            ![cloudsight](images/cloudsight.svg)
-            ![google_cloud_platform](images/google_cloud_platform.svg)
-            ![microsoft](images/microsoft.svg)
-            ![ibm_watson](images/watson.png)
-          </section>
-
-          <section data-markdown>
-            ### Programmable Web
-
-            Directory containing over 15,000 APIs
+            Directory containing over 15,000 APIs.
 
             ![Programmable Web](images/programmable_web.png)
-          </section>
-
-          <section data-markdown>
-            TODO: front-end template -> back-end template
           </section>
 
           <section data-markdown>
@@ -605,7 +482,7 @@ The goal is to use as many existing blocks for each of these categories as possi
           </section>
 
           <section data-markdown>
-            **Protip:** Stick to the APIs you know!
+            **Protip:** Stick to the languages, libraries APIs you know!
           </section>
         </section>
 
@@ -616,23 +493,57 @@ The goal is to use as many existing blocks for each of these categories as possi
             ![Ship It](images/ship_it.jpg)
           </section>
 
+          <section data-markdown data-notes="
+No one gets their own servers these days.
+">
+            ![the_cloud](images/the_cloud.jpg)
+
+            Deploy our back-end service to cloud instances.
+          </section>
+
           <section data-markdown>
             ### Platform as a Service (PaaS)
 
-            Deploy your back-end to the cloud
+            Don't deploy machines, deploy apps.
 
-            TODO: Heroku?
+            To iterate quickly, deplyoments should be as easy as:
 
-            TODO: Cloud9
-
-            TODO: briefly mention AWS, but why we don't recommend it
+            ```
+            git push production master
+            ```
           </section>
 
-          <section>
-            TODO: run through this
+          <section data-markdown class="api-section">
+            ### Commonly Used Platforms
+
+            ![aws](images/aws.svg)
+            ![heroku](images/heroku.png)
+            ![google_app_engine](images/google_app_engine.png)
+            ![ms_azure](images/ms_azure.svg)
+            ![firebase](images/firebase.png)
+          </section>
+
+          <section data-markdown>
+            ### Heroku
+
+            1. Install Heroku toolbelt
+              - &nbsp;`brew install heroku`
+            2. Authenticate your Heroku account
+              - `heroku login`
+            2. Create Heroku app
+              - `heroku create &lt;appName&gt;`
+            3. Add app's repo to git
+              - `heroku git:remote -a &lt;appName&gt;`
+            4. Deploy your master repo using
+              - `git push heroku master`
+          </section>
+
+          <section data-markdown>
+            Heroku auto-detects type of service you deploy.
+
+            New service is deployed **immediately**.
           </section>
         </section>
-        <!-- END MANI'S STUFF -->
 
         <section>
           <section data-markdown>
@@ -646,67 +557,213 @@ The goal is to use as many existing blocks for each of these categories as possi
 
         <section>
           <section data-markdown>
-            ## Process
-          </section>
-
-          <section data-markdown>
-            ### Work Distribution
-
-            TODO: devs/designers
-
-            TODO: parallel or sequential if one -- use diagram
-          </section>
-        </section>
-
-        <section>
-          <section data-markdown>
             ## Takeaways
           </section>
 
           <section data-markdown>
-            TODO
+            If you have an idea for an app, build it.
+
+            It won't take as long you think to build it.
+          </section>
+
+          <section data-markdown data-notes="
+...providing you scope your MVP properly.
+
+Follow the Rule One
+  - build one core feature
+  - build it for a single user type
+  - focus on a single, specific pain point
+
+It makes so much easier to scope your MVP, prevents feature creep and means you
+know exactly what assumptions you're validating.
+">
+            Scope your MVP.
+
+            Follow the Rule of One.
           </section>
 
           <section data-markdown>
-            <h3>Get in Touch</h3>
+            ![glance_in_blocks_small](images/glance_in_blocks.svg)
 
-            <div>
-              <img src="images/donald.jpg" alt="Donald Whyte" class="profile-pic" />
-              <div class="contact-details">
-                <a href="http://twitter.com/donald_whyte">@donald_whyte</a><br />
-                <a href="http://github.com/DonaldWhyte">http://github.com/DonaldWhyte</a>
-              </div>
-            </div>
+            Breakdown your MVP into block types
+
+            **Be lazy** &mdash; always seek to re-use existing blocks
           </section>
 
           <section data-markdown>
-            [Find the slides and code here](https://github.com/DonaldWhyte/isomorphic-react-workshop)
+            ### Front-End
+
+            * Design user journey and paper prototypes first
+            * Use templates and theme generators for the live site/app
+            * Start with mocked data so you're not blocked on the back-end
+
+            If you can't work in parallel, work on the front-end first.
+          </section>
+
+          <section data-markdown data-notes="
+Store as little data as possible too. For example, why not store more user info
+than you need?
+
+Rely on Twitter or Facebook account integrations.
+
+Users will likely have those accounts already anyway, and it takes the burden on
+authorisation off you.
+">
+            ### Back-End and APIs
+
+            * If an API already exists for a task &mdash; use it!
+            * If you've thought of it, chances are someone has built an API
+              - Google and Programmable Web are your friends
+            * You want to write as little code as possible
+            * Store as little data as possible
+          </section>
+
+          <section data-markdown data-notes="
+Instant deployment is a must -- the whole point of MVPs that can quicky iterate
+and adapt to new learnings.
+">
+            ### Platforms
+
+            * Don't bother managing your own infra
+            * Use existing PaaS services
+            * instant deployment is a must
           </section>
 
           <section data-markdown>
-            ### Additional Reading
+            ### [**Find the slides and code here**](https://github.com/DonaldWhyte/isomorphic-react-workshop)
+          </section>
 
-            * [TODO](TODO)
-            * [TODO](TODO)
-            * [TODO](TODO)
+          <section data-markdown>
+            ## Further Materials
+
+            [**How I Build MVPs Within 3 Days**](https://medium.com/@vadimdemedes/how-i-build-mvps-within-3-days-5d0b9ea86d9c)
+
+            [**How I Build my Minimum Viable Products**](https://levels.io/how-i-build-my-minimum-viable-products/)
+
+            [**Signs You Aren't Really Building an MVP**](http://www.panozzaj.com/blog/2012/01/11/signs-you-arent-really-building-a-minimum-viable-product/)
           </section>
 
           <section>
-            <h3>Get in Touch</h3>
+            <h3>Get in Touch!</h3>
 
-            <div>
-              <img src="images/donald.jpg" alt="Donald Whyte" class="profile-pic" />
-              <div class="contact-details">
-                <a href="http://twitter.com/donald_whyte">@donald_whyte</a><br />
-                <a href="http://github.com/DonaldWhyte">http://github.com/DonaldWhyte</a>
-              </div>
+            <div class="profile-section left-col">
+              <img src="images/donald.jpg" alt="Donald Whyte" /> <br/>
+              <a href="http://twitter.com/donald_whyte">@donald_whyte</a> <br />
+              <a href="http://github.com/DonaldWhyte">github.com/DonaldWhyte</a>
+            </div>
+            <div class="profile-section right-col">
+              <img src="images/mani.jpg" alt="Mansimran Singh" /> <br />
+              <a href="http://twitter.com/msingh_5">@msingh_5</a> <br />
+              <a href="http://github.com/mansimransingh">github.com/mansimransingh</a>
             </div>
           </section>
         </section>
 
         <section>
           <section data-markdown>
-            # StartupBus UK
+            ## Appendix
+          </section>
+
+          <section data-markdown class="api-section">
+            ### Social APIs
+
+            Quick and easy account management
+
+            Get users sharing your app with others
+
+            ![facebook](images/facebook.svg)
+            ![twitter](images/twitter.svg)
+            ![instagram](images/instagram.svg)
+            ![google_plus](images/google_plus.svg)
+            ![reddit](images/reddit.svg)
+          </section>
+
+          <section data-markdown class="api-section">
+            ### Comms APIs
+
+            Communicate with users using existing platforms
+
+            ![twilio](images/twilio.svg)
+            ![twitter](images/twitter.svg)
+            ![slack](images/slack.svg)
+            ![sendgrid](images/sendgrid.svg)
+            ![mailjet](images/mailjet.svg)
+          </section>
+
+          <section data-markdown class="api-section wide">
+            ### Payment APIs
+
+            Convert users to paying customers easily
+
+            Don't need to be PCI complaint
+
+            ![paypal](images/paypal.svg)
+            ![stripe](images/stripe.svg)
+            ![amazon](images/amazon.svg)
+            ![braintree](images/braintree.svg)
+          </section>
+
+          <section data-markdown class="api-section">
+            ### Natural Language Processing APIs and Bots
+
+            Parse and understand human textual input
+
+            Great for automated bots
+
+            ![aylien](images/aylien.png)
+            ![alchemy](images/alchemy.svg)
+            ![google_cloud_platform](images/google_cloud_platform.svg)
+            ![microsoft](images/microsoft.svg)
+          </section>
+
+          <section data-markdown class="api-section">
+            ### Image Recognition APIs
+
+            Processing user photos and video
+
+            ![clarifai](images/clarifai.png)
+            ![cloudsight](images/cloudsight.svg)
+            ![google_cloud_platform](images/google_cloud_platform.svg)
+            ![microsoft](images/microsoft.svg)
+            ![ibm_watson](images/watson.png)
+          </section>
+        </section>
+
+        <section>
+          <section data-background="images/startupbus_background.jpg">
+            <a href="https://startupbus.com/">
+              <img src="images/startupbus.svg" alt="StartupBus_Big" />
+            </a>
+
+            <h1 class="stroke">StartupBus</h1>
+            <h3 class="stroke">September 2nd &mdash; 7th</h3>
+          </section>
+
+          <section data-background="images/startupbus_working.jpg">
+          </section>
+
+          <section data-markdown>
+            ![StartupBus UK 2016 Route](images/startupbus_uk_2016_route.png)
+          </section>
+
+          <section data-markdown>
+            ![StartupBus Europe 2016](images/startupbus_europe_2016.jpg)
+          </section>
+
+          <section data-markdown>
+            ### Perks
+
+            * 5-day road trip across Europe
+            * technical and business mentorship
+            * networking events at tech hubs (e.g. Paris)
+            * ticket to [**Pirate Summit**](http://piratesummit.com/)
+              - 2 day tech startup in Cologne
+          </section>
+
+          <section data-markdown>
+            ### Apply
+
+            [**http://europe.startupbus.com/apply**](http://europe.startupbus.com/apply)
           </section>
         </section>
       </div>

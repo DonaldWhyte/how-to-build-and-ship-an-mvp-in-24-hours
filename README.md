@@ -9,6 +9,7 @@ Talk on how to build and ship an MVP in 24 hours, complete with code examples.
 You can also run the presentation on a local web server. Clone this repository and run the presentation like so:
 
 ```
+cd slides
 npm install
 grunt serve
 ```
