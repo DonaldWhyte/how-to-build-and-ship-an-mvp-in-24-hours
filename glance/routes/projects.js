@@ -4,6 +4,8 @@ var Project = require('../models/Project');
 var Trello = require('../engines/trello');
 var Channel = require('../models/Channel');
 
+var Hook = require('../models/hook');
+
 router.get('/', function(req, res, next) {
   // must be logged in
   if (!req.user) {
@@ -74,10 +76,33 @@ router.get('/:id/add/:type/:externalId', function(req, res, next){
                                 return next(err);
                             } else {
                                 doc.channels.push(channelDoc.id);
-                                doc.save(function(err){
-                                    // TODO better error checking
-                                     res.redirect('/projects/'+req.params.id);
-                                });                           
+
+                                var hook = new Hook();
+                                hook.endpoint = 'http://dev.glance.today/hook/'+hook._id;
+                                hook.user = req.user.id;
+                                hook.project = doc.id;
+                                hook.channel = channelDoc.id
+                                hook.save(function(err, savedHook){
+                                    if (err) return next(err);
+
+                                    Trello.addHook(req, {
+                                        description: "My hook",
+                                        callbackURL: savedHook.endpoint,
+                                        idModel: channelDoc.id
+                                    }, function(err, response){
+                                        if (err) return next(err);
+
+                                        savedHook.initMeta = response;
+
+                                        savedHook.save();
+
+                                        doc.save(function(err){
+                                            // TODO better error checking
+                                             res.redirect('/projects/'+req.params.id);
+                                        });    
+                                    });
+                                });
+                       
                             }
                         });
                     });
