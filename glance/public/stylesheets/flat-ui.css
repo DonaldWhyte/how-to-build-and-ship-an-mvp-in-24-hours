@@ -5833,15 +5833,15 @@ fieldset[disabled] .navbar-inverse .navbar-btn.active {
 }
 .login {
   /*background: url(../img/login/imac.png) 0 0 no-repeat;*/
-  background-size: 940px 778px;
+/*  background-size: 940px 778px;*/
   color: #ffffff;
-  margin-bottom: 77px;
-  padding: 38px 38px 267px;
+
+  padding: 38px 38px 38px;
   position: relative;
 }
 .login-screen {
   /*background-color: #1abc9c;*/
-  min-height: 473px;
+  /*min-height: 473px;*/
   /*padding: 123px 199px 33px 306px;*/
   max-width:500px;
   margin:0 auto;
