@@ -1,5 +1,5 @@
 <div class="container">
-    <h1>My random project</h1>
+    <h1>{{project.name}}</h1>
     <hr>
     {{#unless user.trelloId}}
     <div class="row">
@@ -8,53 +8,40 @@
       </div>
     </div>
     <hr>
+    {{else}}
+    <div class="row tags-container">
+      <div class="col-md-12">
+        <h3 class="text-primary text-center"><a href="#addChannel" data-toggle="collapse"><i class="fa fa-fw fa-plus"></i> Add channel</a></h3>
+      </div>
+      <div id="addChannel" class="collapse col-md-12">
+        {{#each boards}}
+          <a class="btn btn-primary" href="/projects/{{../project.id}}/add-channel/trello/{{id}}">{{name}}</a>
+        {{/each}}
+      </div>
+    </div>
+    <hr>
     {{/unless}}
+
+    {{#each project.channels}}
     <div class="row">
         <div class="col-md-12">
-            <h3>My first channel</h3>
+            <h3><a href="/projects/{{id}}">{{name}}</a></h3>
             <h4 class="progress-text">70/100</h4>
             <div class="progress">
               <div class="progress-bar" role="progressbar" aria-valuenow="70"
               aria-valuemin="0" aria-valuemax="100" style="width:70%">
-                <span class="sr-only">My first channel</span>
+                <span class="sr-only">{{name}}</span>
               </div>
             </div>
         </div>
     </div>
+    <hr>
+    {{else}}
     <div class="row">
-        <div class="col-md-12">
-            <h3>My second channel</h3>
-            <h4 class="progress-text">50/100</h4>
-            <div class="progress">
-              <div class="progress-bar" role="progressbar" aria-valuenow="50"
-              aria-valuemin="0" aria-valuemax="100" style="width:50%">
-                <span class="sr-only">My second channel</span>
-              </div>
-            </div>
-        </div>
+      <div class="col-md-12">
+        <h3 class="text-danger text-center">No channels found</h3>
+      </div>
     </div>
-    <div class="row">
-        <div class="col-md-12">
-            <h3>My fourth channel</h3>
-            <h4 class="progress-text">35/100</h4>
-            <div class="progress">
-              <div class="progress-bar" role="progressbar" aria-valuenow="35"
-              aria-valuemin="0" aria-valuemax="100" style="width:35%">
-                <span class="sr-only">My fourth channel</span>
-              </div>
-            </div>
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-md-12">
-            <h3>My third channel</h3>
-            <h4 class="progress-text">10/100</h4>
-            <div class="progress">
-              <div class="progress-bar" role="progressbar" aria-valuenow="10"
-              aria-valuemin="0" aria-valuemax="100" style="width:10%">
-                <span class="sr-only">My third channel</span>
-              </div>
-            </div>
-        </div>
-    </div>
+    {{/each}}
+
 </div>

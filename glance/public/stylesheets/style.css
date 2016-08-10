@@ -1,5 +1,5 @@
 @import "https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css";
-@import "https://daneden.github.io/animate.css/animate.min.css";
+/*@import "https://daneden.github.io/animate.css/animate.min.css";*/
 /*-------------------------------*/
 /*           VARIABLES           */
 /*-------------------------------*/
@@ -321,4 +321,8 @@ body a:hover {
 #logo-wrapper {
   max-width:100%;
   text-align:center;
+}
+
+.tags-container .btn {
+  margin-bottom:5px;
 }
