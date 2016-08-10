@@ -17,7 +17,7 @@
     <meta property="og:title" content="How to Build and Ship an MVP in 24 Hours" />
     <meta property="og:description" content="Talk on how to build and ship an MVP in 24 hours, complete with code examples" />
     <meta property="og:url" content="http://donaldwhyte.github.io/how-to-build-and-ship-an-mvp-in-24-hours" />
-    <meta property="og:image" content="http://donaldwhyte.github.io/how-to-build-and-ship-an-mvp-in-24-hours/images/og_image.png" /> <!-- TODO: make og_image.png -->
+    <meta property="og:image" content="http://donaldwhyte.github.io/how-to-build-and-ship-an-mvp-in-24-hours/images/story3.png" />
 
     <link rel="stylesheet" href="css/reveal.css">
     <link rel="stylesheet" href="css/theme/night.css">
@@ -276,16 +276,31 @@ We need an...
             <h2 class="fragment fade-in">At a glance.</h2>
           </section>
 
-          <section data-markdown data-notes="
-TODO: Some general market trends that may make this viable.
-">
+          <section data-markdown>
             ### One Step Further
 
-            Massive growth in decentralised, distributed teams
+            Growth in decentralised, distributed teams
 
             Self-managed teams with shallow hierarchy
 
-            TODO
+            Multi-disciplinary teams that use specialised tracking software
+          </section>
+
+          <section data-markdown data-notes="
+I've worked for multiple large enterprises.
+
+I've seen first hand just how much money senior managers are willing to pay to
+reduce complex project metrics into pretty looking progress bars.
+
+Large projects require lots of software lots of software to track them. So why
+not consolidate all that information in one place?
+
+Provide cheaper solution for smaller, distributed companies that need to track
+complex, multi-disciplinary projects as well.
+">
+            Enterprise pay huge amounts for progress tracking.
+
+            Target the smaller, more distributed companies as well!
           </section>
 
           <section data-markdown data-notes="
@@ -297,12 +312,12 @@ Features:
 ">
             ## Glance
 
-            Aggregation of progress.
+            Aggregation of progress metrics.
 
             ![glance_vision](images/glance_vision.svg)
           </section>
 
-          <section data-notes="
+          <section data-markdown data-notes="
 Follow the rule of one.
 
 We want our MVP to test the assumption that people have a need to view overviews
@@ -314,21 +329,26 @@ be ignored.
 You focus on one pain point for the MVP. You have tunnel vision -- you live and
 breathe that pain point, it's all you think about.
 ">
-            <h3>The MVP</h3>
-            <h3>Follow the Rule of One</h3>
+            ### The MVP
+            #### Follow the Rule of One
 
-            <p class="fragment fade-in"><strong>One</strong> user type</p>
-            <p class="fragment fade-in"><strong>One</strong> use case</p>
-            <p class="fragment fade-in"><strong>One</strong> industry</p>
-            <p class="fragment fade-in"><strong>One</strong> core feature</p>
-            <p class="fragment fade-in"><strong>One</strong> very specific problem</p>
+            * **One** user type
+            * **One** use case
+            * **One** industry
+            * **One** core feature
+            * **One** very specific problem
           </section>
 
           <section data-notes="
 So what pain point are we going to focus on for this talk?
 
-Our pain point.
+Mine.
+
+Personally, I find that the best way to build products. Solve your own problems,
+and then see if those solutions apply to others.
 ">
+            <h3>Scope of this MVP</h3>
+
             <p>Distributed team management</p>
             <p>Short-term projects</p>
             <p>Who manage their tasks using Trello</p>
@@ -459,10 +479,13 @@ You might even be able to get away with
           <section data-markdown data-notes="
 Keep the back-end as small as possible by off-loading all the hard work to
 existing APIs.
+
+Use boilerplate generators/existing projects to reduce the time you spend
+writing non-business logic.
 ">
-            1. Use existing APIs where possible
-            2. Use boilerplate generators or existing projects as a base
-            3. TODO
+            1. Replace mock data on front-end with real data
+            2. Build back-end using existing APIs where possible
+            3. Base back-end on boilerplate generators or existing projects
           </section>
 
           <section data-markdown>
@@ -482,15 +505,13 @@ existing APIs.
           </section>
 
           <section data-markdown>
-            **Protip:** Stick to the languages, libraries APIs you know!
+            **Protip:** Stick to the languages/libraries/APIs you know!
           </section>
         </section>
 
         <section>
           <section data-markdown>
             ## Platforms and Deployment
-
-            ![Ship It](images/ship_it.jpg)
           </section>
 
           <section data-markdown data-notes="
