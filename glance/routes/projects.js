@@ -120,12 +120,25 @@ router.get('/:id/monitor/:channelId/:listId', function(req, res, next){
 
                 currentChannel.markModified('meta');
 
-                currentChannel.save(function(err, currChannelDoc){
-                    if (err){
-                        return next(err);
-                    }
-                    res.redirect('/projects/'+req.params.id);
+                // get the board from trello
+                Trello.getBoard(req, currentChannel.externalId, {lists:'all',list_fields:'name',cards:'all',card_fields:'idList'}, function(err, board){
+                    if (err) return next(err);
+
+                    currentChannel.total = board.cards.length;
+                    currentChannel.completed = board.cards.filter(function(card){ return card.idList == currentChannel.monitoringId; }).length;
+
+                    currentChannel.markModified('total');
+                    currentChannel.markModified('completed');
+
+                    currentChannel.save(function(err, currChannelDoc){
+                        if (err){
+                            return next(err);
+                        }
+                        res.redirect('/projects/'+req.params.id);
+                    });
                 });
+
+
             break;
             default:
                 return next(new Error("Invalid channel"));
@@ -153,7 +166,7 @@ router.get('/:id', function(req, res, next) {
                         channel.percentageCompleted = 0;
                         try {
                             channel.percentageCompleted = channel.completed / channel.total;
-                            Channel.percentageCompleted *= 100;
+                            channel.percentageCompleted *= 100;
                         } catch(e){}
                         return channel;
                     });
