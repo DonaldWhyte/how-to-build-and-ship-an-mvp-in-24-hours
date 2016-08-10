@@ -49,37 +49,42 @@ var findProject = function(userId, projectId, callback) {
 router.get('/:id/add/:type/:externalId', function(req, res, next){
     findProject(req.user.id, req.params.id, function(err, doc){
         if (err){
-            next(err);
-        } else {
+            return next(err);
+        } 
+
             switch (req.params.type){
                 case 'trello':
-                    // TODO validate external ID - i.e. does this actually exist with the type specified
-                    // register callbacks
-                    var channel = new Channel();
-
-                    channel.user = req.user;
-                    channel.project = req.params.id;
-                    channel.type = req.params.type;
-                    channel.externalId = req.params.externalId;
-                    channel.name = "Get board name";
-                    channel.project = doc.id;
-
-                    channel.save(function(err, channelDoc){
+                    Trello.getBoard(req, req.params.externalId, {lists:'all',list_fields:'name'}, function(err, board){
                         if (err){
                             return next(err);
-                        } else {
-                            doc.channels.push(channelDoc.id);
-                            doc.save(function(err){
-                                // TODO better error checking
-                                 res.redirect('/projects/'+req.params.id);
-                            });                           
-                        }
+                        } 
+                        // TODO better error handling
+                        var channel = new Channel();
+
+                        channel.user = req.user;
+                        channel.project = req.params.id;
+                        channel.type = req.params.type;
+                        channel.externalId = req.params.externalId;
+                        channel.name = board.name;
+                        channel.project = doc.id;
+                        channel.meta = board;
+
+                        channel.save(function(err, channelDoc){
+                            if (err){
+                                return next(err);
+                            } else {
+                                doc.channels.push(channelDoc.id);
+                                doc.save(function(err){
+                                    // TODO better error checking
+                                     res.redirect('/projects/'+req.params.id);
+                                });                           
+                            }
+                        });
                     });
                 break;
                 default:
                     return next(new Error('Invalid channel type'));
             }
-        }
     });
 });
 
@@ -87,7 +92,10 @@ router.get('/:id', function(req, res, next) {
     // should probably make this check better
     findProject(req.user.id, req.params.id, function(err, doc){
         if (err){
-          req.flash('errors', err);
+          // req.flash('errors', err);
+          return next(err);
+        } else if(doc == null){
+            return next(new Error("No project found"));
         } else {
             // hacky 
             if (req.user.trelloId){
