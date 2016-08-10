@@ -1,4 +1,5 @@
 var mongoose = require('mongoose');
+var Channel = require('./Channel');
 
 var projectsSchema = new mongoose.Schema({
   user: {type:mongoose.Schema.ObjectId, ref:'User'},

@@ -42,16 +42,33 @@ router.post('/', function(req, res, next) {
 
 router.get('/:id', function(req, res, next) {
     // should probably make this check better
-       Project.findOne({ user: req.user.id, _id: req.params.id }, function(err, doc){
+       Project.findOne({ user: req.user.id, _id: req.params.id }).populate('channels').exec(function(err, doc){
         if (err){
           req.flash('errors', err);
         } else {
-          res.render('channels', {
-            title: doc.name + ' | Project',
-            user: req.user,
-            project: doc,
-            errors: err
-          });
+            // hacky 
+            if (req.user.trelloId){
+                Trello.getBoards(req, function(err, boards){
+                    if (err){ return next(err); }
+                    var boardIds = boards.map(function(board, i){ return boards.id });
+                    doc.channels = doc.channels.filter(function(channel){ return boardIds.indexOf(channel.externalId) == -1 });
+
+                    res.render('channels', {
+                        title: doc.name + ' | Project',
+                        user: req.user,
+                        project: doc,
+                        errors: err,
+                        boards: boards,
+                      });
+                });
+            } else {
+                res.render('channels', {
+                    title: doc.name + ' | Project',
+                    user: req.user,
+                    project: doc,
+                    errors: err
+                  });
+            }
         }
       });
 });
