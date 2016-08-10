@@ -21,11 +21,11 @@
     </div>
     <hr>
     {{/unless}}
-
+    
     {{#each project.channels}}
     <div class="row">
         <div class="col-md-12">
-            <h3><a href="/projects/{{id}}">{{name}}</a></h3>
+            <h3>{{name}}</h3>
             <h4 class="progress-text">70/100</h4>
             <div class="progress">
               <div class="progress-bar" role="progressbar" aria-valuenow="70"
@@ -34,7 +34,11 @@
               </div>
             </div>
             {{#each meta.lists}}
-            <span class="label label-default">{{name}}</span>
+              {{#if hook.enabled}}
+                <span class="label label-primary">{{name}}</span>
+              {{else}}
+                <span class="label label-default"><a href="/projects/{{../project}}/monitor/{{../id}}/{{id}}">{{name}}</a></span>
+              {{/if}}            
             {{/each}}
         </div>
     </div>

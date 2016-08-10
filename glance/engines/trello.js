@@ -26,3 +26,7 @@ exports.getBoard = function(req, boardId, options, callback){
         callback(err, JSON.parse(body));
     });
 }; 
+
+exports.disableHook = function(hookId){
+    //TODO implement
+};

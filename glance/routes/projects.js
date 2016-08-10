@@ -88,6 +88,51 @@ router.get('/:id/add/:type/:externalId', function(req, res, next){
     });
 });
 
+router.get('/:id/monitor/:channelId/:listId', function(req, res, next){
+    Channel.findOne({project:req.params.id, user:req.user.id, _id:req.params.channelId}).exec(function(err, currentChannel){
+        if (err){
+            return next(err);
+        } 
+
+        switch(currentChannel.type){
+            case 'trello':
+                // find enabled hook and disable it
+                // enable the hook on the current list
+
+                var hookedListId = false;
+                for (var i=0, j = currentChannel.meta.lists.length; i < j; i++){
+                    try {
+                        if (currentChannel.meta.lists[i].hook.enabled === true){
+                            currentChannel.meta.lists[i].hook.enabled = false;
+                            // TODO maybe easier to just hook to teh board?
+                            // Trello.disableHook(currentChannel.meta.lists[i].hook.id);
+                        }
+                    }catch(e){}    
+
+                    if (currentChannel.meta.lists[i].id == req.params.listId){
+                        currentChannel.meta.lists[i].hook = {};
+                        currentChannel.meta.lists[i].hook.enabled = true;
+                        currentChannel.meta.lists[i].hook.id = "123456";
+                        // Trello.hookBoard?
+
+                    }                
+                }
+
+                currentChannel.markModified('meta');
+
+                currentChannel.save(function(err, currChannelDoc){
+                    if (err){
+                        return next(err);
+                    }
+                    res.redirect('/projects/'+req.params.id);
+                });
+            break;
+            default:
+                return next(new Error("Invalid channel"));
+        }
+    });
+});
+
 router.get('/:id', function(req, res, next) {
     // should probably make this check better
     findProject(req.user.id, req.params.id, function(err, doc){
