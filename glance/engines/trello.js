@@ -51,7 +51,10 @@ exports.getBoard = function(req, boardId, options, callback){
 
 exports.addHook = function(req, options, callback){
     post('/webhooks', req.user.trelloAccessToken, options, function(err, response, body){
-        callback(err, JSON.parse(body));
+        if (response.statusCode !== 200){
+            return callback(new Error("failed to create hook"), null);
+        }
+        callback(err, body);
     });
 };
 
