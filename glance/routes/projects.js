@@ -2,6 +2,7 @@ var express = require('express');
 var router = express.Router();
 var Project = require('../models/Project');
 var Trello = require('../engines/trello');
+var Channel = require('../models/Channel');
 
 router.get('/', function(req, res, next) {
   // must be logged in
@@ -40,9 +41,51 @@ router.post('/', function(req, res, next) {
   });
 });
 
+var findProject = function(userId, projectId, callback) {
+       Project.findOne({ user: userId, _id: projectId }).populate('channels').exec(callback);
+};
+
+// TODO check if this external id hasn't already been added to this project
+router.get('/:id/add/:type/:externalId', function(req, res, next){
+    findProject(req.user.id, req.params.id, function(err, doc){
+        if (err){
+            next(err);
+        } else {
+            switch (req.params.type){
+                case 'trello':
+                    // TODO validate external ID - i.e. does this actually exist with the type specified
+                    // register callbacks
+                    var channel = new Channel();
+
+                    channel.user = req.user;
+                    channel.project = req.params.id;
+                    channel.type = req.params.type;
+                    channel.externalId = req.params.externalId;
+                    channel.name = "Get board name";
+                    channel.project = doc.id;
+
+                    channel.save(function(err, channelDoc){
+                        if (err){
+                            return next(err);
+                        } else {
+                            doc.channels.push(channelDoc.id);
+                            doc.save(function(err){
+                                // TODO better error checking
+                                 res.redirect('/projects/'+req.params.id);
+                            });                           
+                        }
+                    });
+                break;
+                default:
+                    return next(new Error('Invalid channel type'));
+            }
+        }
+    });
+});
+
 router.get('/:id', function(req, res, next) {
     // should probably make this check better
-       Project.findOne({ user: req.user.id, _id: req.params.id }).populate('channels').exec(function(err, doc){
+    findProject(req.user.id, req.params.id, function(err, doc){
         if (err){
           req.flash('errors', err);
         } else {
@@ -50,8 +93,8 @@ router.get('/:id', function(req, res, next) {
             if (req.user.trelloId){
                 Trello.getBoards(req, function(err, boards){
                     if (err){ return next(err); }
-                    var boardIds = boards.map(function(board, i){ return boards.id });
-                    doc.channels = doc.channels.filter(function(channel){ return boardIds.indexOf(channel.externalId) == -1 });
+                    var externalChannelIds = doc.channels.map(function(channel){ return channel.externalId; });
+                    boards = boards.filter(function(board){ return externalChannelIds.indexOf(board.id) == -1; });
 
                     res.render('channels', {
                         title: doc.name + ' | Project',
@@ -72,5 +115,6 @@ router.get('/:id', function(req, res, next) {
         }
       });
 });
+
 
 module.exports = router;
