@@ -1,0 +1,805 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+    <title>How to Build and Ship an MVP in 24 Hours</title>
+
+    <meta name="description" content="How to Build and Ship an MVP in 24 Hours">
+    <meta name="author" content="Donald Whyte and Mansimran Singh">
+
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+
+    <meta property="og:title" content="How to Build and Ship an MVP in 24 Hours" />
+    <meta property="og:description" content="Talk on how to build and ship an MVP in 24 hours, complete with code examples" />
+    <meta property="og:url" content="http://donaldwhyte.github.io/how-to-build-and-ship-an-mvp-in-24-hours" />
+    <meta property="og:image" content="http://donaldwhyte.github.io/how-to-build-and-ship-an-mvp-in-24-hours/images/story3.png" />
+
+    <link rel="stylesheet" href="css/reveal.css">
+    <link rel="stylesheet" href="css/theme/night.css">
+    <link rel="stylesheet" href="css/custom.css">
+
+    <!-- Theme used for syntax highlighting of code -->
+    <link rel="stylesheet" href="lib/css/zenburn.css">
+
+    <!-- Printing and PDF exports -->
+    <script>
+      var link = document.createElement( 'link' );
+      link.rel = 'stylesheet';
+      link.type = 'text/css';
+      link.href = window.location.search.match( /print-pdf/gi ) ? 'css/print/pdf.css' : 'css/print/paper.css';
+      document.getElementsByTagName( 'head' )[0].appendChild( link );
+    </script>
+  </head>
+  <body>
+    <div class="reveal">
+      <div class="slides">
+        <section data-notes="
+## Who This is For?
+
+* developers
+* designers
+* anyone who wants to prototype
+">
+          <div id="presentation-title">
+            <h2>How to Build and Ship an MVP</h2>
+            <h2>In 24 Hours</h2>
+
+            <p>
+                <a href="http://twitter.com/donald_whyte">Donald Whyte</a>
+                / <a href="http://mansimransingh.com/">Mansimran Singh</a>
+            </p>
+          </div>
+
+          <div id="company-notice">
+            <p>Prepared by</p>
+            <a href="https://startupbus.com/">
+              <img src="images/startupbus.svg" alt="StartupBus" />
+            </a>
+            <a href="https://generalassemb.ly/">
+              <img src="images/general_assembly.png" alt="General Assembly" />
+            </a>
+          </div>
+        </section>
+
+        <section>
+          <section data-background="images/story1.jpg" data-notes="
+You and a bunch of mates having a chat in a coffee shop, having casual
+conversation while sipping on sipping on £3 flat whites. You're discussing your
+daily problems.
+
+Suddenly, one of you has an idea. You think you know how to solve your friend's
+problem. That idea turns into an app. You start discussing what features it
+should have, who it's for, you give it a name.
+
+Everyone's excited.
+">
+          </section>
+
+          <section data-background="images/story2.jpg" data-notes="
+Let's do this.
+">
+          </section>
+
+          <section data-background="images/story3.jpg" data-notes="
+So then you start discussing...what needs to get done?
+
+You start breaking the problem down, making a list all of the work required.
+">
+          </section>
+
+          <section>
+            <h3>What Needs to Get Done?</h3>
+
+            <p class="fragment fade-in">Decide all of features</p>
+            <p class="fragment fade-in">Design the app</p>
+            <p class="fragment fade-in">Decide tech/platforms</p>
+            <p class="fragment fade-in">Setup database</p>
+            <p class="fragment fade-in">Write front-end</p>
+            <p class="fragment fade-in">Write back-end</p>
+            <p class="fragment fade-in">Deploy back-end</p>
+            <p class="fragment fade-in">Release to the app store</p>
+          </section>
+
+          <section data-notes="
+Suppose this was a mobile app. Writing the app would involve...
+
+As the idea grows, people start adding more features to the product, increasing
+the time it takes to get it out of the door. This increase in cost does not
+grow linearly either.
+">
+            <h3>Write Front-End/Back-end</h3>
+
+            <div class="spaced-components">
+              <p class="fragment fade-in">Writing the front-end views</p>
+              <p class="fragment fade-in">User account management</p>
+              <p class="fragment fade-in">Managing user payment info</p>
+              <p class="fragment fade-in">Form validation</p>
+              <p class="fragment fade-in">Store relevant data in DB</p>
+              <p class="fragment fade-in">Write back-end business logic</p>
+              <p class="fragment fade-in">Integrate various APIs</p>
+              <p class="fragment fade-in">Ensure the app looks good on all devices</p>
+              <p class="fragment fade-in">Test combination of features work correctly</p>
+            </div>
+          </section>
+
+          <section data-background="images/story4.jpg" data-notes="
+The list grows so large that the app insurmountable. All you wanted was to build
+an app, right?. You just want to build something you think is awesome and find
+out if people want it.
+
+You have a job. You have other commitments. And the amount of upfront time
+required to make your idea a reality discourages you.
+
+So you give up.
+">
+          </section>
+
+          <section data-background="images/story5.jpg" data-notes="
+A few months later, after giving up and forgetting about the idea, you'll find
+out someone's actually built the thing and now has a company valued at millions.
+
+And you'll sit there bemoaning the fact you thought of the idea but didn't act
+on it.
+">
+          </section>
+
+          <section data-markdown>
+            ### Why Does this Happen?
+
+            * Poor estimation of work
+            * Feature creep
+            * "More is better" fallacy
+            * Fear to ship
+          </section>
+        </section>
+
+        <section>
+          <section data-markdown>
+            ## MVP
+
+            ####  Minimum Viable Product
+          </section>
+
+          <section data-markdown data-notes="
+I'm sure most of you know what an MVP is, but its definition bears repeating.
+">
+            ### A Definition
+
+            > Smallest thing you can build that gets the product out to customers
+          </section>
+
+          <section data-markdown data-notes="
+It's an optimisation problem.
+
+You want to maximise the learning the product gives you, whilst minimising the
+resource costs.
+">
+            ## Goal
+
+            **Maximise** learning about the users and problem domain
+
+            **Minimise** resources spent
+          </section>
+
+          <section data-notes="
+Some definitions would consider paper prototypes and mock ups MVPs. After all,
+you can learn about the problem domain and users that way.
+
+In this talk however, we use a stricter definition. We define an MVP as the
+smallest product that can be shipped to users and immediately provide reals value.
+
+Something that we build and ship to the intended users.
+">
+            <h3>Our Definition</h3>
+
+            <blockquote class="fragment fade-in">
+              Smallest product that can be shipped to users and immediately provide value
+            </blockquote>
+          </section>
+
+          <section data-markdown>
+            Absolute minimum to show your vision
+
+            But enough to ship to users
+
+            Single core feature you want to validate
+
+            Nothing else
+          </section>
+        </section>
+
+        <section>
+          <section data-markdown>
+            ## Let's Build Something!
+          </section>
+
+          <section data-background="images/startupbus_working2.jpg" data-notes="
+One problem we often have with StartupBus events in making sure that each team
+are on track, and are prioriting the right tasks.
+
+We have multiple buses, or hackathons, running at the same time.
+
+Each bus has many teams, all of which are multi-disciplinary. There's developers,
+designers and biz dev people.
+
+Making sure each team on every bus is on track is a logistical nightmare.
+
+We don't want to constantly check up on teams and micro-manage them. They've got
+a lot to do and not a lot of time to do.
+
+Our solution?
+">
+          </section>
+
+          <section data-background="images/trello_board.png" data-notes="
+We provide each team with a Trello board.
+
+The board contains high-level tasks, or milestones, the team's should strive to reach.
+
+We've found it to be an effective way of getting a team to prioritise getting an MVP out the door and shipped to customers.
+">
+          </section>
+
+          <section data-markdown>
+            ### The Problem
+
+            Teams are:
+
+            * distributed across multiple locations
+            * multi-disciplined
+            * managed by different people
+            * busy
+          </section>
+
+          <section data-notes="
+Trello doesn't support aggregated statistics on boards out of the box.
+
+Having one of the directors constantly inspect the Trello boards of 30 or more
+teams is time-consuming and wasteful.
+
+It doesn't really solve the problem.
+
+We need an...
+">
+            <p>We need an effective way to see the progress of the entire competition.</p>
+
+            <h2 class="fragment fade-in">At a glance.</h2>
+          </section>
+
+          <section data-markdown>
+            ### One Step Further
+
+            Growth in decentralised, distributed teams
+
+            Self-managed teams with shallow hierarchy
+
+            Multi-disciplinary teams that use specialised tracking software
+          </section>
+
+          <section data-markdown data-notes="
+I've worked for multiple large enterprises.
+
+I've seen first hand just how much money senior managers are willing to pay to
+reduce complex project metrics into pretty looking progress bars.
+
+Large projects require lots of software lots of software to track them. So why
+not consolidate all that information in one place?
+
+Provide cheaper solution for smaller, distributed companies that need to track
+complex, multi-disciplinary projects as well.
+">
+            Enterprise pay huge amounts for progress tracking.
+
+            Target the smaller, more distributed companies as well!
+          </section>
+
+          <section data-markdown data-notes="
+Features:
+
+1. Integrate many task managements
+2. Generate and share URLs to view aggregated progress
+3. Provide API so aggregated progress data can be used in other apps
+">
+            ## Glance
+
+            Aggregation of progress metrics.
+
+            ![glance_vision](images/glance_vision.svg)
+          </section>
+
+          <section data-markdown data-notes="
+Follow the rule of one.
+
+We want our MVP to test the assumption that people have a need to view overviews
+of project progress that are not produced by existing tools.
+
+Any features, integrations outside not related to testing that assumption will
+be ignored.
+
+You focus on one pain point for the MVP. You have tunnel vision -- you live and
+breathe that pain point, it's all you think about.
+">
+            ### The MVP
+            #### Follow the Rule of One
+
+            * **One** user type
+            * **One** use case
+            * **One** industry
+            * **One** core feature
+            * **One** very specific problem
+          </section>
+
+          <section data-notes="
+So what pain point are we going to focus on for this talk?
+
+Mine.
+
+Personally, I find that the best way to build products. Solve your own problems,
+and then see if those solutions apply to others.
+">
+            <h3>Scope of this MVP</h3>
+
+            <p>Distributed team management</p>
+            <p>Short-term projects</p>
+            <p>Who manage their tasks using Trello</p>
+
+            <h3 class="fragment fade-in">StartupBus Team Tracking</h3>
+          </section>
+
+          <section data-markdown>
+            ![glance_for_now](images/glance_for_now.svg)
+          </section>
+
+          <section data-background="images/trello_board.png" data-notes="
+We want to turn dozens of these...
+">
+          </section>
+
+          <section data-background="images/glance_mvp_screenshot.png" data-notes="
+...into this.
+">
+          </section>
+
+          <section data-markdown data-notes="
+Scopinh the MVP is one thing.
+
+Building it in 24 hours is another.
+">
+            But how are we going to build this in 24 hours?
+          </section>
+
+          <section data-markdown>
+            > I will always choose a lazy person to do a difficult job...
+            because, he will find an easy way to do it.
+
+            _Bill Gates_
+          </section>
+
+          <section data-background="images/lego_blocks.jpg" data-notes="
+Adopt a lego mindset.
+
+Building block programming.
+">
+          </section>
+
+          <section data-background="images/lego_vision.jpg" data-notes="
+What you think you will build.
+">
+          </section>
+
+          <section data-background="images/lego_mvp2.jpg" data-notes="
+What you actually end up building.
+">
+          </section>
+
+          <section data-background="images/lego_pyramid.jpg" data-notes="
+We can group these blocks into four types.
+
+Front-end -- what the user interacts with
+
+Back-end -- where all the complex business logic lives and data is stored
+
+The back-end supported by pre-existing APIs and deployment platforms.
+
+The goal is to use as many existing blocks for each of these categories as possible.
+">
+          </section>
+        </section>
+
+        <section>
+          <section data-markdown>
+            ## Building Glance 0.1
+          </section>
+
+          <section data-markdown data-notes="
+We're in MVP mode at the moment. So we re-use as much as possible.
+
+We need to figure out which blocks to use for the four different categories.
+
+Front-end
+Back-End
+APIs
+Deployment platforms
+">
+            ![glance_in_blocks](images/glance_in_blocks.svg)
+          </section>
+
+          <section data-markdown data-notes="
+If there's only one of you working on the app, then make sure you prioritise
+the front-end.
+
+That way, if you start running out of time, at least you do have something visual
+to show to your issues.
+
+You might even be able to get away with
+">
+            ### Distributing the Work
+
+            Parallelise as much as possible.
+
+            Separate developers on each block type.
+
+            If one developer, prioritise the front-end.
+          </section>
+        </section>
+
+        <section>
+          <section data-markdown>
+            ## Front End
+          </section>
+
+          <section data-markdown>
+            1. Design user journey and draw mock-ups
+            2. Use existing templates when it makes sense
+            3. Generate boilerplate UI code
+            4. Use mock data so you don't have to rely on back-end
+          </section>
+
+          <section data-markdown>
+            ![bootstrap_meme](images/bootstrap_meme.jpg)
+          </section>
+        </section>
+
+        <section>
+          <section data-markdown>
+            ## Back-End and APIs
+          </section>
+
+          <section data-markdown data-notes="
+Keep the back-end as small as possible by off-loading all the hard work to
+existing APIs.
+
+Use boilerplate generators/existing projects to reduce the time you spend
+writing non-business logic.
+">
+            1. Replace mock data on front-end with real data
+            2. Build back-end using existing APIs where possible
+            3. Base back-end on boilerplate generators or existing projects
+          </section>
+
+          <section data-markdown>
+            ### API Repository &mdash; Programmable Web
+
+            Directory containing over 15,000 APIs.
+
+            ![Programmable Web](images/programmable_web.png)
+          </section>
+
+          <section data-markdown>
+            ### Hackathon Starter Kit
+
+            [https://github.com/sahat/hackathon-starter](https://github.com/sahat/hackathon-starter)
+
+            ![Hackathon Starter Kit](images/hackathon_starter_kit.png)
+          </section>
+
+          <section data-markdown>
+            **Protip:** Stick to the languages/libraries/APIs you know!
+          </section>
+        </section>
+
+        <section>
+          <section data-markdown>
+            ## Platforms and Deployment
+          </section>
+
+          <section data-markdown data-notes="
+No one gets their own servers these days.
+">
+            ![the_cloud](images/the_cloud.jpg)
+
+            Deploy our back-end service to cloud instances.
+          </section>
+
+          <section data-markdown>
+            ### Platform as a Service (PaaS)
+
+            Don't deploy machines, deploy apps.
+
+            To iterate quickly, deplyoments should be as easy as:
+
+            ```
+            git push production master
+            ```
+          </section>
+
+          <section data-markdown class="api-section">
+            ### Commonly Used Platforms
+
+            ![aws](images/aws.svg)
+            ![heroku](images/heroku.png)
+            ![google_app_engine](images/google_app_engine.png)
+            ![ms_azure](images/ms_azure.svg)
+            ![firebase](images/firebase.png)
+          </section>
+
+          <section data-markdown>
+            ### Heroku
+
+            1. Install Heroku toolbelt
+              - &nbsp;`brew install heroku`
+            2. Authenticate your Heroku account
+              - `heroku login`
+            2. Create Heroku app
+              - `heroku create &lt;appName&gt;`
+            3. Add app's repo to git
+              - `heroku git:remote -a &lt;appName&gt;`
+            4. Deploy your master repo using
+              - `git push heroku master`
+          </section>
+
+          <section data-markdown>
+            Heroku auto-detects type of service you deploy.
+
+            New service is deployed **immediately**.
+          </section>
+        </section>
+
+        <section>
+          <section data-markdown>
+            ## How it All Fits Together
+          </section>
+
+          <section data-markdown>
+            ![glance_architecture](images/glance_architecture.svg)
+          </section>
+        </section>
+
+        <section>
+          <section data-markdown>
+            ## Takeaways
+          </section>
+
+          <section data-markdown>
+            If you have an idea for an app, build it.
+
+            It won't take as long you think to build it.
+          </section>
+
+          <section data-markdown data-notes="
+...providing you scope your MVP properly.
+
+Follow the Rule One
+  - build one core feature
+  - build it for a single user type
+  - focus on a single, specific pain point
+
+It makes so much easier to scope your MVP, prevents feature creep and means you
+know exactly what assumptions you're validating.
+">
+            Scope your MVP.
+
+            Follow the Rule of One.
+          </section>
+
+          <section data-markdown>
+            ![glance_in_blocks_small](images/glance_in_blocks.svg)
+
+            Breakdown your MVP into block types
+
+            **Be lazy** &mdash; always seek to re-use existing blocks
+          </section>
+
+          <section data-markdown>
+            ### Front-End
+
+            * Design user journey and paper prototypes first
+            * Use templates and theme generators for the live site/app
+            * Start with mocked data so you're not blocked on the back-end
+
+            If you can't work in parallel, work on the front-end first.
+          </section>
+
+          <section data-markdown data-notes="
+Store as little data as possible too. For example, why not store more user info
+than you need?
+
+Rely on Twitter or Facebook account integrations.
+
+Users will likely have those accounts already anyway, and it takes the burden on
+authorisation off you.
+">
+            ### Back-End and APIs
+
+            * If an API already exists for a task &mdash; use it!
+            * If you've thought of it, chances are someone has built an API
+              - Google and Programmable Web are your friends
+            * You want to write as little code as possible
+            * Store as little data as possible
+          </section>
+
+          <section data-markdown data-notes="
+Instant deployment is a must -- the whole point of MVPs that can quicky iterate
+and adapt to new learnings.
+">
+            ### Platforms
+
+            * Don't bother managing your own infra
+            * Use existing PaaS services
+            * instant deployment is a must
+          </section>
+
+          <section data-markdown>
+            ### [**Find the slides and code here**](https://github.com/DonaldWhyte/isomorphic-react-workshop)
+          </section>
+
+          <section data-markdown>
+            ## Further Materials
+
+            [**How I Build MVPs Within 3 Days**](https://medium.com/@vadimdemedes/how-i-build-mvps-within-3-days-5d0b9ea86d9c)
+
+            [**How I Build my Minimum Viable Products**](https://levels.io/how-i-build-my-minimum-viable-products/)
+
+            [**Signs You Aren't Really Building an MVP**](http://www.panozzaj.com/blog/2012/01/11/signs-you-arent-really-building-a-minimum-viable-product/)
+          </section>
+
+          <section>
+            <h3>Get in Touch!</h3>
+
+            <div class="profile-section left-col">
+              <img src="images/donald.jpg" alt="Donald Whyte" /> <br/>
+              <a href="http://twitter.com/donald_whyte">@donald_whyte</a> <br />
+              <a href="http://github.com/DonaldWhyte">github.com/DonaldWhyte</a>
+            </div>
+            <div class="profile-section right-col">
+              <img src="images/mani.jpg" alt="Mansimran Singh" /> <br />
+              <a href="http://twitter.com/msingh_5">@msingh_5</a> <br />
+              <a href="http://github.com/mansimransingh">github.com/mansimransingh</a>
+            </div>
+          </section>
+        </section>
+
+        <section>
+          <section data-markdown>
+            ## Appendix
+          </section>
+
+          <section data-markdown class="api-section">
+            ### Social APIs
+
+            Quick and easy account management
+
+            Get users sharing your app with others
+
+            ![facebook](images/facebook.svg)
+            ![twitter](images/twitter.svg)
+            ![instagram](images/instagram.svg)
+            ![google_plus](images/google_plus.svg)
+            ![reddit](images/reddit.svg)
+          </section>
+
+          <section data-markdown class="api-section">
+            ### Comms APIs
+
+            Communicate with users using existing platforms
+
+            ![twilio](images/twilio.svg)
+            ![twitter](images/twitter.svg)
+            ![slack](images/slack.svg)
+            ![sendgrid](images/sendgrid.svg)
+            ![mailjet](images/mailjet.svg)
+          </section>
+
+          <section data-markdown class="api-section wide">
+            ### Payment APIs
+
+            Convert users to paying customers easily
+
+            Don't need to be PCI complaint
+
+            ![paypal](images/paypal.svg)
+            ![stripe](images/stripe.svg)
+            ![amazon](images/amazon.svg)
+            ![braintree](images/braintree.svg)
+          </section>
+
+          <section data-markdown class="api-section">
+            ### Natural Language Processing APIs and Bots
+
+            Parse and understand human textual input
+
+            Great for automated bots
+
+            ![aylien](images/aylien.png)
+            ![alchemy](images/alchemy.svg)
+            ![google_cloud_platform](images/google_cloud_platform.svg)
+            ![microsoft](images/microsoft.svg)
+          </section>
+
+          <section data-markdown class="api-section">
+            ### Image Recognition APIs
+
+            Processing user photos and video
+
+            ![clarifai](images/clarifai.png)
+            ![cloudsight](images/cloudsight.svg)
+            ![google_cloud_platform](images/google_cloud_platform.svg)
+            ![microsoft](images/microsoft.svg)
+            ![ibm_watson](images/watson.png)
+          </section>
+        </section>
+
+        <section>
+          <section data-background="images/startupbus_background.jpg">
+            <a href="https://startupbus.com/">
+              <img src="images/startupbus.svg" alt="StartupBus_Big" />
+            </a>
+
+            <h1 class="stroke">StartupBus</h1>
+            <h3 class="stroke">September 2nd &mdash; 7th</h3>
+          </section>
+
+          <section data-background="images/startupbus_working.jpg">
+          </section>
+
+          <section data-markdown>
+            ![StartupBus UK 2016 Route](images/startupbus_uk_2016_route.png)
+          </section>
+
+          <section data-markdown>
+            ![StartupBus Europe 2016](images/startupbus_europe_2016.jpg)
+          </section>
+
+          <section data-markdown>
+            ### Perks
+
+            * 5-day road trip across Europe
+            * technical and business mentorship
+            * networking events at tech hubs (e.g. Paris)
+            * ticket to [**Pirate Summit**](http://piratesummit.com/)
+              - 2 day tech startup in Cologne
+          </section>
+
+          <section data-markdown>
+            ### Apply
+
+            [**http://europe.startupbus.com/apply**](http://europe.startupbus.com/apply)
+          </section>
+        </section>
+      </div>
+    </div>
+
+    <script src="lib/js/head.min.js"></script>
+    <script src="js/reveal.js"></script>
+
+    <script>
+      // More info https://github.com/hakimel/reveal.js#configuration
+      Reveal.initialize({
+        history: true,
+
+        // More info https://github.com/hakimel/reveal.js#dependencies
+        dependencies: [
+          { src: 'plugin/markdown/marked.js' },
+          { src: 'plugin/markdown/markdown.js' },
+          { src: 'plugin/notes/notes.js', async: true },
+          { src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } }
+        ]
+      });
+    </script>
+  </body>
+</html>

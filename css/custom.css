@@ -1,0 +1,134 @@
+.reveal section img {
+    border: 0px;
+    box-shadow: none;
+    background: none;
+}
+
+.left-col {
+    float: left;
+    width: 50%;
+}
+
+.right-col {
+    float: right;
+    width: 50%;
+}
+
+#presentation-title {
+    margin-top: 128px;
+}
+
+#company-notice {
+    margin-top: 32px;
+    float: right;
+}
+
+#company-notice p {
+    font-size: 24px;
+    margin: 0px;
+    text-align: center;
+}
+
+#company-notice img {
+    margin: 12px;
+}
+
+.spaced-components p {
+    margin: 22px;
+}
+
+
+h1.stroke, h2.stroke, h3.stroke {
+    text-shadow:
+        -2px -2px 0 #000,
+        2px -2px 0 #000,
+        -2px 2px 0 #000,
+        2px 2px 0 #000;
+}
+
+.profile-section img {
+  width: 160px;
+}
+
+.api-section img {
+    width: 100px;
+    padding: 12px;
+}
+
+.api-section.wide img {
+    width: 140px;
+}
+
+/* Image Sizes */
+img[alt="StartupBus"] {
+    width: 180px;
+}
+
+img[alt="StartupBus_Big"] {
+    width: 240px;
+}
+
+img[alt="General Assembly"] {
+    width: 115px;
+}
+
+img[alt="Programmable Web"] {
+    width: 600px;
+}
+
+img[alt="Hackathon Starter Kit"] {
+    width: 800px;
+}
+
+img[alt="Ship It"] {
+    width: 400px;
+}
+
+img[alt="yelp"] {
+    width: 200px !important;
+}
+
+img[alt="stripe"] {
+    width: 100px !important;
+}
+
+img[alt="braintree"] {
+    width: 180px !important;
+}
+
+img[alt="mailjet"] {
+    width: 200px !important;
+}
+
+img[alt="clarifai"] {
+    width: 120px !important;
+}
+
+img[alt="cloudsight"] {
+    width: 120px !important;
+}
+
+img[alt="the_cloud"] {
+    width: 300px !important;
+}
+
+img[alt="heroku"] {
+    width: 90px !important;
+}
+
+img[alt="aws"] {
+    width: 200px !important;
+}
+
+img[alt="StartupBus Europe 2016"] {
+    top: -50px;
+    width: 600px;
+}
+
+img[alt="glance_in_blocks_small"] {
+    width: 550px;
+}
+
+img[alt="firebase"] {
+    width: 80px;
+}
