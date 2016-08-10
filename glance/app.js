@@ -9,10 +9,6 @@ var passport = require('passport');
 var TwitterStrategy = require('passport-twitter').Strategy;
 var expressSession = require('express-session');
 var mongoose = require('mongoose');
-var routes = require('./routes/index');
-var users = require('./routes/users');
-var projects = require('./routes/projects');
-var channels = require('./routes/channels');
 var TrelloStrategy = require('passport-trello').Strategy;
 var expressValidator = require('express-validator');
 var flash        = require('req-flash');
@@ -20,6 +16,13 @@ var flash        = require('req-flash');
 var app = express();
 
 var User = require('./models/User');
+
+var routes = require('./routes/index');
+var users = require('./routes/users');
+var projects = require('./routes/projects');
+var channels = require('./routes/channels');
+var hook = require('./routes/hook');
+
 
 mongoose.connect(process.env.MONGOLAB_URI);
 mongoose.connection.on('error', () => {
@@ -159,6 +162,8 @@ app.get('/logout', function(req, res, next){
   req.logout();
   res.redirect('/');
 });
+
+app.get('/hook', hook);
 
 app.get('/auth/trello', isAuthenticated, passport.authorize('trello'))
 app.get('/auth/trello/callback', isAuthenticated, passport.authorize('trello', { failureRedirect: '/' }), (req, res) => {
