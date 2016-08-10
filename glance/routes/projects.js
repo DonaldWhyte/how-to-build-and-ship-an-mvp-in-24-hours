@@ -41,18 +41,19 @@ router.post('/', function(req, res, next) {
 });
 
 router.get('/:id', function(req, res, next) {
-  Project.findOne({ user: req.user.id, _id: req.params.id }, function(err, doc){
-    if (err){
-      req.flash('errors', err);
-    } else {
-      res.render('channels', {
-        title: doc.name + ' | Project',
-        user: req.user,
-        project: doc,
-        errors: err
+    // should probably make this check better
+       Project.findOne({ user: req.user.id, _id: req.params.id }, function(err, doc){
+        if (err){
+          req.flash('errors', err);
+        } else {
+          res.render('channels', {
+            title: doc.name + ' | Project',
+            user: req.user,
+            project: doc,
+            errors: err
+          });
+        }
       });
-    }
-  });
 });
 
 module.exports = router;
