@@ -9,7 +9,8 @@ var channelSchema = new mongoose.Schema({
     monitoringId: {type:String}, // we're only dealing with trello, so we know its going to be a list
     // but it might be a different logic somewhere else - so adding other "channels" will require a little more thinking
     project: {type:mongoose.Schema.ObjectId, ref:'Project'},
-    name: {type:String}
+    name: {type:String},
+    meta: {type:Object}
 });
 
 var Channel = mongoose.model('Channel', channelSchema);
