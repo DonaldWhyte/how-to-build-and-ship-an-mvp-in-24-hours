@@ -19,7 +19,7 @@ router.get('/', function(req, res, next) {
   });
 });
 
-router.post('/add', function(req, res, next) {
+router.post('/', function(req, res, next) {
   req.assert('name', 'Project name cannot be blank').notEmpty();
 
   var errors = req.validationErrors();

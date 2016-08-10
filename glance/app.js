@@ -14,6 +14,7 @@ var users = require('./routes/users');
 var projects = require('./routes/projects');
 var channels = require('./routes/channels');
 var TrelloStrategy = require('passport-trello').Strategy;
+var expressValidator = require('express-validator');
 
 var app = express();
 
@@ -129,6 +130,7 @@ app.set('view engine', 'hbs');
 app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
+app.use(expressValidator());
 app.use(cookieParser());
 
 app.use(express.static(path.join(__dirname, 'public')));
