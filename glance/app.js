@@ -13,6 +13,7 @@ var routes = require('./routes/index');
 var users = require('./routes/users');
 var projects = require('./routes/projects');
 var channels = require('./routes/channels');
+var TrelloStrategy = require('passport-trello').Strategy;
 
 var app = express();
 
@@ -73,6 +74,31 @@ passport.use(new TwitterStrategy({
   }
 }));
 
+passport.use('trello', new TrelloStrategy({
+  requestTokenURL: 'https://trello.com/1/OAuthGetRequestToken',
+  accessTokenURL: 'https://trello.com/1/OAuthGetAccessToken',
+  userAuthorizationURL: 'https://trello.com/1/OAuthAuthorizeToken',
+  consumerKey: process.env.TRELLO_API_KEY,
+  consumerSecret: process.env.TRELLO_API_SECRET,
+  callbackURL: '/auth/trello/callback',
+  passReqToCallback: true,
+  trelloParams: {
+    scope: "read,write",
+    name: "ga-test-app",
+    expiration: "never"
+  }
+}, function(req, token, tokenSecret, profile, done) {
+    User.findById(req.user._id, (err, user) => {
+      user.trelloAccessToken = token;
+      user.trelloSecret = tokenSecret;
+      user.trelloId = profile._json.id;
+
+      user.save((err) => {
+        done(err, user);
+      });
+    });
+}
+));
 
 passport.serializeUser((user, done) => {
   done(null, user.id);
@@ -118,9 +144,9 @@ app.use('/', routes);
 
 app.get('/login', passport.authenticate('twitter'));
 app.get('/login/twitter/callback', 
-  passport.authenticate('twitter', { failureRedirect: '/login' }),
+  passport.authenticate('twitter', { failureRedirect: '/' }),
   function(req, res) {
-    res.redirect('/project');
+    res.redirect('/projects');
   }
 );
 
@@ -129,7 +155,13 @@ app.get('/logout', function(req, res, next){
   res.redirect('/');
 });
 
-app.use('/project', isAuthenticated, projects);
+app.get('/auth/trello', isAuthenticated, passport.authorize('trello'))
+app.get('/auth/trello/callback', isAuthenticated, passport.authorize('trello', { failureRedirect: '/' }), (req, res) => {
+  res.redirect('/');
+});
+
+
+app.use('/projects', isAuthenticated, projects);
 app.use('/project/:id', isAuthenticated, channels);
 // app.use('/users', users);
 
