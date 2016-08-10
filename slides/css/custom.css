@@ -52,13 +52,12 @@ img[alt="Ship It"] {
     width: 400px;
 }
 
-.profile-pic {
-  width: 200px;
-  float: left;
+.left {
+    float: left;
 }
 
-.contact-details a {
-  text-align: left;
+.profile-section img {
+  width: 160px;
 }
 
 .api-section img {
@@ -119,3 +118,16 @@ h1.stroke, h2.stroke, h3.stroke {
         2px 2px 0 #000;
 }
 
+.left-col {
+    float: left;
+    width: 50%;
+}
+
+.right-col {
+    float: right;
+    width: 50%;
+}
+
+img[alt="glance_in_blocks_small"] {
+    width: 550px;
+}

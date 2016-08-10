@@ -186,20 +186,19 @@ resource costs.
 ">
             ## Goal
 
-            maximise learning about your users/problem domain
+            **Maximise** learning about the users and problem domain
 
-            using the least time/effort possible
+            **Minimise** resources spent
           </section>
 
           <section data-notes="
 Some definitions would consider paper prototypes and mock ups MVPs. After all,
 you can learn about the problem domain and users that way.
 
-In this talk however, we're a little stricter on our definition. We're going to
-be defining an MVP as one the smallest product that can be shipped to users and
-imemdiately provide real value.
+In this talk however, we use a stricter definition. We define an MVP as the
+smallest product that can be shipped to users and immediately provide reals value.
 
-Something we can build and ship.
+Something that we build and ship to the intended users.
 ">
             <h3>Our Definition</h3>
 
@@ -346,6 +345,7 @@ We want to turn dozens of these...
 ">
           </section>
 
+          <!-- TODO: fill in screenshot with Mani -->
           <section data-background="images/glance_mvp_screenshot.png" data-notes="
 ...into this.
 ">
@@ -531,9 +531,9 @@ You might even be able to get away with
           <section data-markdown>
             ### What is an API?
 
-            TODO: what is an API
+            >
 
-            TODO: why use them?
+            []
           </section>
 
           <section data-markdown>
@@ -609,7 +609,7 @@ You might even be able to get away with
           <section data-markdown class="api-section">
             ### Image Recognition
 
-            TODO
+            I
 
             ![clarifai](images/clarifai.png)
             ![cloudsight](images/cloudsight.svg)
@@ -718,30 +718,98 @@ No one gets their own servers these days.
           </section>
 
           <section data-markdown>
-            TODO
+            If you have an idea for an app, build it.
+
+            It won't take as long you think to build it.
+          </section>
+
+          <section data-markdown data-notes="
+...providing you scope your MVP properly.
+
+Follow the Rule One
+  - build one core feature
+  - build it for a single user type
+  - focus on a single, specific pain point
+
+It makes so much easier to scope your MVP, prevents feature creep and means you
+know exactly what assumptions you're validating.
+">
+            Scope your MVP.
+
+            Follow the Rule of One.
           </section>
 
           <section data-markdown>
-            [Find the slides and code here](https://github.com/DonaldWhyte/isomorphic-react-workshop)
+            ![glance_in_blocks_small](images/glance_in_blocks.svg)
+
+            Breakdown your MVP into block types
+
+            **Be lazy** &mdash; always seek to re-use existing blocks
           </section>
 
           <section data-markdown>
-            ### Additional Reading
+            ### Front-End
 
-            * [TODO](TODO)
-            * [TODO](TODO)
-            * [TODO](TODO)
+            * Design user journey and paper prototypes first
+            * Use templates and theme generators for the live site/app
+            * Start with mocked data so you're not blocked on the back-end
+
+            If you can't work in parallel, work on the front-end first.
+          </section>
+
+          <section data-markdown data-notes="
+Store as little data as possible too. For example, why not store more user info
+than you need?
+
+Rely on Twitter or Facebook account integrations.
+
+Users will likely have those accounts already anyway, and it takes the burden on
+authorisation off you.
+">
+            ### Back-End and APIs
+
+            * If an API already exists for a task &mdash; use it!
+            * If you've thought of it, chances are someone has built an API
+              - Google and Programmable Web are your friends
+            * You want to write as little code as possible
+            * Store as little data as possible
+          </section>
+
+          <section data-markdown data-notes="
+Instant deployment is a must -- the whole point of MVPs that can quicky iterate
+and adapt to new learnings.
+">
+            ### Platforms
+
+            * Don't bother managing your own infra
+            * Use existing PaaS services
+            * instant deployment is a must
+          </section>
+
+          <section data-markdown>
+            ### [**Find the slides and code here**](https://github.com/DonaldWhyte/isomorphic-react-workshop)
+          </section>
+
+          <section data-markdown>
+            ### Further Materials
+
+            * [**How I Build MVPs Within 3 Days**](https://medium.com/@vadimdemedes/how-i-build-mvps-within-3-days-5d0b9ea86d9c) by Vadim Demedes
+            * [**How I Build my Minimum Viable Products**] by Pieter Levels (https://levels.io/how-i-build-my-minimum-viable-products/)
+            * [**Signs You Aren't Really Building an MVP**](http://www.panozzaj.com/blog/2012/01/11/signs-you-arent-really-building-a-minimum-viable-product/)
           </section>
 
           <section>
-            <h3>Get in Touch</h3>
+            <h3>Get in Touch!</h3>
 
-            <div>
-              <img src="images/donald.jpg" alt="Donald Whyte" class="profile-pic" />
-              <div class="contact-details">
-                <a href="http://twitter.com/donald_whyte">@donald_whyte</a><br />
-                <a href="http://github.com/DonaldWhyte">http://github.com/DonaldWhyte</a>
-              </div>
+            <div class="profile-section left-col">
+              <img src="images/donald.jpg" alt="Donald Whyte" /> <br/>
+              <a href="http://twitter.com/donald_whyte">@donald_whyte</a> <br />
+              <a href="http://github.com/DonaldWhyte">github.com/DonaldWhyte</a>
+            </div>
+            <div class="profile-section right-col">
+              <img src="images/mani.jpg" alt="Mansimran Singh" /> <br />
+              <a href="http://twitter.com/msingh_5">@msingh_5</a> <br />
+              <a href="http://github.com/mansimransingh">github.com/mansimransingh</a>
             </div>
           </section>
         </section>
