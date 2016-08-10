@@ -7,7 +7,11 @@ var userSchema = new mongoose.Schema({
 
   twitterToken: {type:String},
   twitterId: {type:String, unique:true, index:true},
-  twitterSecret: {type:String}
+  twitterSecret: {type:String},
+
+  trelloAccessToken: {type:String},
+  trelloSecret: {type:String},
+  trelloId: {type:String}
 
 }, { timestamps: true });
 
