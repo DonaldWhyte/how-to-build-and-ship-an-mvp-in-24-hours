@@ -167,7 +167,7 @@ app.get('/auth/trello/callback', isAuthenticated, passport.authorize('trello', {
 
 
 app.use('/projects', isAuthenticated, projects);
-app.use('/project/:id', isAuthenticated, channels);
+// app.use('/projects/:id', isAuthenticated, channels);
 // app.use('/users', users);
 
 // catch 404 and forward to error handler
