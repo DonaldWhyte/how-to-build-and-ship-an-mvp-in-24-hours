@@ -76,7 +76,7 @@ router.get('/:id/add/:type/:externalId', function(req, res, next){
                                 return next(err);
                             } else {
                                 doc.channels.push(channelDoc.id);
-
+ 
                                 var hook = new Hook();
                                 hook.endpoint = 'http://dev.glance.today/hook/'+hook._id;
                                 hook.user = req.user.id;
