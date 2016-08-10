@@ -114,7 +114,7 @@ router.get('/:id/monitor/:channelId/:listId', function(req, res, next){
                         currentChannel.meta.lists[i].hook.enabled = true;
                         currentChannel.meta.lists[i].hook.id = "123456";
                         // Trello.hookBoard?
-
+                        currentChannel.monitoringId = req.params.listId;
                     }                
                 }
 
@@ -148,6 +148,15 @@ router.get('/:id', function(req, res, next) {
                     if (err){ return next(err); }
                     var externalChannelIds = doc.channels.map(function(channel){ return channel.externalId; });
                     boards = boards.filter(function(board){ return externalChannelIds.indexOf(board.id) == -1; });
+
+                    doc.channels = doc.channels.map(function(channel){
+                        channel.percentageCompleted = 0;
+                        try {
+                            channel.percentageCompleted = channel.completed / channel.total;
+                            Channel.percentageCompleted *= 100;
+                        } catch(e){}
+                        return channel;
+                    });
 
                     res.render('channels', {
                         title: doc.name + ' | Project',
