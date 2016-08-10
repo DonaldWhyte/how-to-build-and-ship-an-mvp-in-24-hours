@@ -19,6 +19,7 @@
     "passport": "^0.3.2",
     "passport-trello": "^0.1.5",
     "passport-twitter": "^1.0.4",
+    "req-flash": "0.0.3",
     "request": "^2.74.0",
     "serve-favicon": "~2.3.0"
   }

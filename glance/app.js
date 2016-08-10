@@ -15,6 +15,7 @@ var projects = require('./routes/projects');
 var channels = require('./routes/channels');
 var TrelloStrategy = require('passport-trello').Strategy;
 var expressValidator = require('express-validator');
+var flash        = require('req-flash');
 
 var app = express();
 
@@ -142,6 +143,8 @@ app.use(expressSession({ secret: process.env.SESSION_SECRET, resave: true, saveU
 app.use(passport.initialize());
 app.use(passport.session());
 
+app.use(flash());
+
 app.use('/', routes);
 
 app.get('/login', passport.authenticate('twitter'));
@@ -192,10 +195,16 @@ if (app.get('env') === 'development') {
 // no stacktraces leaked to user
 app.use(function(err, req, res, next) {
   res.status(err.status || 500);
-  res.render('error', {
+  var options = {
+    user: req.user,
     message: err.message,
     error: {}
-  });
+  };
+
+  if (req.isAuthenticated()){
+    options.homepage = true; // hacky thing for the side manu
+  }
+  res.render('error', options);
 });
 
 
