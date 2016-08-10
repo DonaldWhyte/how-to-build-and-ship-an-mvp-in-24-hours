@@ -163,14 +163,14 @@ app.get('/logout', function(req, res, next){
   res.redirect('/');
 });
 
-app.get('/hook', hook);
+
 
 app.get('/auth/trello', isAuthenticated, passport.authorize('trello'))
 app.get('/auth/trello/callback', isAuthenticated, passport.authorize('trello', { failureRedirect: '/' }), (req, res) => {
   res.redirect('/');
 });
 
-
+app.use('/hook', hook);
 app.use('/projects', isAuthenticated, projects);
 // app.use('/projects/:id', isAuthenticated, channels);
 // app.use('/users', users);
