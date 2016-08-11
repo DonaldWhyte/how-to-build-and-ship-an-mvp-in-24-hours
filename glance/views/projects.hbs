@@ -1,0 +1,32 @@
+<div class="container">
+
+    <h1>Projects</h1>
+    <hr>
+    <div class="row">
+        <form method="POST" id="new-project-form">
+          <div class="col-md-10">
+            <input type="text" name="name" id="name" autofocus="autofocus" placeholder="New project name" class="form-control"/>
+          </div>
+          <div class="col-md-2">
+            <button type="submit" class="btn btn-primary btn-block"><i class="fa fa-plus"></i> Add project</button>
+          </div>
+        </form>
+    </div>
+    <hr>
+    {{#each projects}}
+    <div class="row">
+        <div class="col-md-12">
+            <h3><a href="/projects/{{id}}">{{name}}</a></h3>
+
+        </div>
+    </div>
+    <hr>
+    {{else}}
+    <div class="row">
+      <div class="col-md-12">
+        <h3 class="text-danger text-center">No projects found</h3>
+      </div>
+    </div>
+    {{/each}}
+
+</div>

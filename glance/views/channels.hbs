@@ -1,0 +1,54 @@
+<div class="container">
+    <h1>{{project.name}}</h1>
+    <hr>
+    {{#unless user.trelloId}}
+    <div class="row">
+      <div class="col-md-12">
+        <h3 class="text-primary text-center"><a href="/auth/trello" class="text-primary">Connect to Trello</a></h3>
+      </div>
+    </div>
+    <hr>
+    {{else}}
+    <div class="row tags-container">
+      <div class="col-md-12">
+        <h3 class="text-primary text-center"><a href="#addChannel" data-toggle="collapse"><i class="fa fa-fw fa-plus"></i> Add channel</a></h3>
+      </div>
+      <div id="addChannel" class="collapse col-md-12">
+        {{#each boards}}
+          <a class="btn btn-primary" href="/projects/{{../project.id}}/add/trello/{{id}}">{{name}}</a>
+        {{/each}}
+      </div>
+    </div>
+    <hr>
+    {{/unless}}
+    
+    {{#each project.channels}}
+    <div class="row">
+        <div class="col-md-12">
+            <h3>{{name}}</h3>
+            <h4 class="progress-text">{{completed}}/{{total}}</h4>
+            <div class="progress">
+              <div class="progress-bar" role="progressbar" aria-valuenow="{{ percentageCompleted }}"
+              aria-valuemin="0" aria-valuemax="{{total}}" style="width:{{ percentageCompleted }}%">
+                <span class="sr-only">{{name}}</span>
+              </div>
+            </div>
+            {{#each meta.lists}}
+              {{#if hook.enabled}}
+                <span class="label label-primary">{{name}}</span>
+              {{else}}
+                <span class="label label-default"><a href="/projects/{{../project}}/monitor/{{../id}}/{{id}}">{{name}}</a></span>
+              {{/if}}            
+            {{/each}}
+        </div>
+    </div>
+    <hr>
+    {{else}}
+    <div class="row">
+      <div class="col-md-12">
+        <h3 class="text-danger text-center">No channels found</h3>
+      </div>
+    </div>
+    {{/each}}
+
+</div>
